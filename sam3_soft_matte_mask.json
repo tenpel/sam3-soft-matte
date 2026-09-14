@@ -1,1 +1,3577 @@
-{"id":"05ba39da-8a4c-44b8-9cc5-5e943af7fd08","revision":0,"last_node_id":212,"last_link_id":233,"nodes":[{"id":119,"type":"CLIPTextEncode","pos":[175.62461160036236,-702.4417517571769],"size":[380,180],"flags":{},"order":10,"mode":0,"inputs":[{"localized_name":"clip","name":"clip","type":"CLIP","link":156},{"localized_name":"text","name":"text","type":"STRING","widget":{"name":"text"},"link":null}],"outputs":[{"localized_name":"CONDITIONING","name":"CONDITIONING","type":"CONDITIONING","slot_index":0,"links":[154]}],"title":"2b. Prompt B - main subject","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"CLIPTextEncode"},"widgets_values":["translucent fish"]},{"id":88,"type":"SAM3_Detect","pos":[653.3808872749175,-1064.0854727508683],"size":[280,220],"flags":{},"order":13,"mode":0,"inputs":[{"localized_name":"model","name":"model","type":"MODEL","link":1},{"localized_name":"image","name":"image","type":"IMAGE","link":4},{"localized_name":"conditioning","name":"conditioning","shape":7,"type":"CONDITIONING","link":3},{"label":"bboxes","localized_name":"bboxes","name":"bboxes","shape":7,"type":"BOUNDING_BOX","link":null},{"label":"positive_coords","localized_name":"positive_coords","name":"positive_coords","shape":7,"type":"STRING","link":null},{"label":"negative_coords","localized_name":"negative_coords","name":"negative_coords","shape":7,"type":"STRING","link":null},{"localized_name":"threshold","name":"threshold","type":"FLOAT","widget":{"name":"threshold"},"link":null},{"localized_name":"refine_iterations","name":"refine_iterations","type":"INT","widget":{"name":"refine_iterations"},"link":null},{"localized_name":"individual_masks","name":"individual_masks","type":"BOOLEAN","widget":{"name":"individual_masks"},"link":null}],"outputs":[{"localized_name":"masks","name":"masks","type":"MASK","slot_index":0,"links":[207]},{"localized_name":"bboxes","name":"bboxes","type":"BOUNDING_BOX","links":null}],"title":"4a. SAM3 Detect - detail (prompt A)","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"SAM3_Detect"},"widgets_values":[0.5,2,false]},{"id":90,"type":"CLIPTextEncode","pos":[173.87471289244777,-1010.8968532690601],"size":[380,180],"flags":{},"order":9,"mode":0,"inputs":[{"localized_name":"clip","name":"clip","type":"CLIP","link":2},{"localized_name":"text","name":"text","type":"STRING","widget":{"name":"text"},"link":null}],"outputs":[{"localized_name":"CONDITIONING","name":"CONDITIONING","type":"CONDITIONING","slot_index":0,"links":[3]}],"title":"2a. Prompt A - detail target","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"CLIPTextEncode"},"widgets_values":["translucent fish's eye"]},{"id":131,"type":"GrowMaskWithBlur","pos":[1046.78508943118,-1088.410630934884],"size":[299.8999938964844,246],"flags":{},"order":16,"mode":0,"inputs":[{"localized_name":"mask","name":"mask","type":"MASK","link":207},{"localized_name":"expand","name":"expand","type":"INT","widget":{"name":"expand"},"link":null},{"localized_name":"incremental_expandrate","name":"incremental_expandrate","type":"FLOAT","widget":{"name":"incremental_expandrate"},"link":null},{"localized_name":"tapered_corners","name":"tapered_corners","type":"BOOLEAN","widget":{"name":"tapered_corners"},"link":null},{"localized_name":"flip_input","name":"flip_input","type":"BOOLEAN","widget":{"name":"flip_input"},"link":null},{"localized_name":"blur_radius","name":"blur_radius","type":"FLOAT","widget":{"name":"blur_radius"},"link":null},{"localized_name":"lerp_alpha","name":"lerp_alpha","type":"FLOAT","widget":{"name":"lerp_alpha"},"link":null},{"localized_name":"decay_factor","name":"decay_factor","type":"FLOAT","widget":{"name":"decay_factor"},"link":null},{"localized_name":"fill_holes","name":"fill_holes","shape":7,"type":"BOOLEAN","widget":{"name":"fill_holes"},"link":null}],"outputs":[{"localized_name":"mask","name":"mask","type":"MASK","links":[206,230]},{"localized_name":"mask_inverted","name":"mask_inverted","type":"MASK","links":null}],"title":"5a. Grow + blur - detail mask","properties":{"cnr_id":"comfyui-kjnodes","ver":"1.4.0","Node name for S&R":"GrowMaskWithBlur"},"widgets_values":[10,0,true,false,10,1,1,false]},{"id":118,"type":"SAM3_Detect","pos":[657.6305627714013,-740.6323948534248],"size":[291.4500030517578,220],"flags":{},"order":15,"mode":0,"inputs":[{"localized_name":"model","name":"model","type":"MODEL","link":155},{"localized_name":"image","name":"image","type":"IMAGE","link":161},{"localized_name":"conditioning","name":"conditioning","shape":7,"type":"CONDITIONING","link":154},{"label":"bboxes","localized_name":"bboxes","name":"bboxes","shape":7,"type":"BOUNDING_BOX","link":null},{"label":"positive_coords","localized_name":"positive_coords","name":"positive_coords","shape":7,"type":"STRING","link":null},{"label":"negative_coords","localized_name":"negative_coords","name":"negative_coords","shape":7,"type":"STRING","link":null},{"localized_name":"threshold","name":"threshold","type":"FLOAT","widget":{"name":"threshold"},"link":null},{"localized_name":"refine_iterations","name":"refine_iterations","type":"INT","widget":{"name":"refine_iterations"},"link":null},{"localized_name":"individual_masks","name":"individual_masks","type":"BOOLEAN","widget":{"name":"individual_masks"},"link":null}],"outputs":[{"localized_name":"masks","name":"masks","type":"MASK","slot_index":0,"links":[208]},{"localized_name":"bboxes","name":"bboxes","type":"BOUNDING_BOX","links":null}],"title":"4b. SAM3 Detect - subject (prompt B)","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"SAM3_Detect"},"widgets_values":[0.5,2,false]},{"id":133,"type":"GrowMaskWithBlur","pos":[1049.3645458056396,-736.1069140829961],"size":[299.8999938964844,246],"flags":{},"order":18,"mode":0,"inputs":[{"localized_name":"mask","name":"mask","type":"MASK","link":208},{"localized_name":"expand","name":"expand","type":"INT","widget":{"name":"expand"},"link":null},{"localized_name":"incremental_expandrate","name":"incremental_expandrate","type":"FLOAT","widget":{"name":"incremental_expandrate"},"link":null},{"localized_name":"tapered_corners","name":"tapered_corners","type":"BOOLEAN","widget":{"name":"tapered_corners"},"link":null},{"localized_name":"flip_input","name":"flip_input","type":"BOOLEAN","widget":{"name":"flip_input"},"link":null},{"localized_name":"blur_radius","name":"blur_radius","type":"FLOAT","widget":{"name":"blur_radius"},"link":null},{"localized_name":"lerp_alpha","name":"lerp_alpha","type":"FLOAT","widget":{"name":"lerp_alpha"},"link":null},{"localized_name":"decay_factor","name":"decay_factor","type":"FLOAT","widget":{"name":"decay_factor"},"link":null},{"localized_name":"fill_holes","name":"fill_holes","shape":7,"type":"BOOLEAN","widget":{"name":"fill_holes"},"link":null}],"outputs":[{"localized_name":"mask","name":"mask","type":"MASK","links":[209]},{"localized_name":"mask_inverted","name":"mask_inverted","type":"MASK","links":null}],"title":"5b. Grow + blur - subject mask","properties":{"cnr_id":"comfyui-kjnodes","ver":"1.4.0","Node name for S&R":"GrowMaskWithBlur"},"widgets_values":[0,0,true,false,1,1,1,false]},{"id":100,"type":"MaskToImage","pos":[94.30290788717669,-349.04359164594337],"size":[200,40],"flags":{},"order":17,"mode":0,"inputs":[{"localized_name":"mask","name":"mask","type":"MASK","link":10}],"outputs":[{"localized_name":"IMAGE","name":"IMAGE","type":"IMAGE","slot_index":0,"links":[144]}],"title":"6b. Mask -> image","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"MaskToImage"},"widgets_values":[]},{"id":20,"type":"ImageToMask","pos":[-187.32003856466292,-351.5644847820223],"size":[283.97499694824216,100],"flags":{},"order":14,"mode":0,"inputs":[{"localized_name":"image","name":"image","type":"IMAGE","link":5},{"localized_name":"channel","name":"channel","type":"COMBO","widget":{"name":"channel"},"link":null}],"outputs":[{"localized_name":"MASK","name":"MASK","type":"MASK","slot_index":0,"links":[10]}],"title":"6a. Source luma -> mask (R channel)","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"ImageToMask"},"widgets_values":["red"]},{"id":101,"type":"ImageToMask","pos":[682.0198897971565,-349.19129063785584],"size":[240,100],"flags":{},"order":21,"mode":0,"inputs":[{"localized_name":"image","name":"image","type":"IMAGE","link":145},{"localized_name":"channel","name":"channel","type":"COMBO","widget":{"name":"channel"},"link":null}],"outputs":[{"localized_name":"MASK","name":"MASK","type":"MASK","slot_index":0,"links":[13]}],"title":"6d. Image -> soft mask","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"ImageToMask"},"widgets_values":["red"]},{"id":102,"type":"GrowMask","pos":[1069.6651810111427,-345.935756774388],"size":[274.9500030517578,100],"flags":{},"order":23,"mode":4,"inputs":[{"localized_name":"mask","name":"mask","type":"MASK","link":13},{"localized_name":"expand","name":"expand","type":"INT","widget":{"name":"expand"},"link":null},{"localized_name":"tapered_corners","name":"tapered_corners","type":"BOOLEAN","widget":{"name":"tapered_corners"},"link":null}],"outputs":[{"localized_name":"MASK","name":"MASK","type":"MASK","slot_index":0,"links":[210]}],"title":"6e. Grow 1px (bypassed by default)","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"GrowMask"},"widgets_values":[1,false]},{"id":117,"type":"Image Levels Adjustment","pos":[344.7629392267105,-348.6263125019491],"size":[280,130],"flags":{},"order":19,"mode":0,"inputs":[{"localized_name":"image","name":"image","type":"IMAGE","link":144},{"localized_name":"black_level","name":"black_level","type":"FLOAT","widget":{"name":"black_level"},"link":null},{"localized_name":"mid_level","name":"mid_level","type":"FLOAT","widget":{"name":"mid_level"},"link":null},{"localized_name":"white_level","name":"white_level","type":"FLOAT","widget":{"name":"white_level"},"link":null}],"outputs":[{"localized_name":"IMAGE","name":"IMAGE","type":"IMAGE","links":[145]}],"title":"6c. Levels - soft matte contrast","properties":{"cnr_id":"was-ns","ver":"3.0.1","Node name for S&R":"Image Levels Adjustment"},"widgets_values":[6,96,255]},{"id":135,"type":"PrimitiveInt","pos":[-1634.59002040947,-508.2500068520175],"size":[270,82],"flags":{},"order":2,"mode":0,"inputs":[{"localized_name":"value","name":"value","type":"INT","widget":{"name":"value"},"link":null}],"outputs":[{"localized_name":"INT","name":"INT","type":"INT","links":[211]}],"title":"Chunk index (increment)","properties":{"cnr_id":"comfy-core","ver":"0.6.0","Node name for S&R":"PrimitiveInt"},"widgets_values":[0,"increment"]},{"id":134,"type":"MathExpression|pysssss","pos":[-1322.1996968900544,-511.20655256351864],"size":[400,200],"flags":{},"order":11,"mode":0,"inputs":[{"localized_name":"a","name":"a","shape":7,"type":"INT,FLOAT,IMAGE,LATENT","link":211},{"localized_name":"b","name":"b","shape":7,"type":"INT,FLOAT,IMAGE,LATENT","link":null},{"localized_name":"c","name":"c","shape":7,"type":"INT,FLOAT,IMAGE,LATENT","link":null},{"localized_name":"expression","name":"expression","type":"INT,FLOAT,IMAGE,LATENT","widget":{"name":"expression"},"link":null}],"outputs":[{"localized_name":"INT","name":"INT","type":"INT","links":[212]},{"localized_name":"FLOAT","name":"FLOAT","type":"FLOAT","links":null}],"title":"Chunk offset = index * chunk size","properties":{"cnr_id":"comfyui-custom-scripts","ver":"1.2.5"},"widgets_values":["a * 48"]},{"id":201,"type":"Note","pos":[-333.5820100213178,-739.1260137234091],"size":[440,260],"flags":{},"order":4,"mode":0,"inputs":[],"outputs":[],"properties":{},"widgets_values":["B - MODEL + PROMPTS\n\nCheckpoint: a SAM3 model placed in ComfyUI/models/checkpoints.\n\n  Prompt A = the small detail to isolate   (e.g. \"fish eye\")\n  Prompt B = the larger subject it sits on (e.g. \"fish\")\n\nShort, concrete noun phrases work best. Lower the SAM3 threshold if\nthe detection drops out on some frames, raise it if it starts\ngrabbing the background."],"color":"#432","bgcolor":"#653"},{"id":202,"type":"Note","pos":[653,-1400],"size":[690,230],"flags":{},"order":5,"mode":0,"inputs":[],"outputs":[],"properties":{},"widgets_values":["C - DETECTION + EDGE SOFTENING\n\nSAM3 Detect returns a hard mask per frame; GrowMaskWithBlur turns it\ninto something compositable.\n\n  expand      dilate in pixels\n  blur_radius feather in pixels\n\n  detail branch  generous expand + blur - hides detection jitter\n  subject branch almost no expand, 1 px blur - keeps the silhouette\n\nindividual_masks = false -> one merged mask per frame.\nrefine_iterations trades speed for edge accuracy."],"color":"#432","bgcolor":"#653"},{"id":210,"type":"LazySwitchKJ","pos":[1870,-1090],"size":[365.0000061035156,100],"flags":{},"order":26,"mode":0,"inputs":[{"localized_name":"on_false","name":"on_false","type":"*","link":230},{"localized_name":"on_true","name":"on_true","type":"*","link":219},{"localized_name":"switch","name":"switch","type":"BOOLEAN","widget":{"name":"switch"},"link":null}],"outputs":[{"localized_name":"*","name":"*","type":"*","links":[231,232]}],"title":"7b. SWITCH 1 - LUMA SOFT MATTE (default: off)","properties":{"cnr_id":"comfyui-kjnodes","ver":"1.4.0","Node name for S&R":"LazySwitchKJ"},"widgets_values":[false],"color":"#232","bgcolor":"#353"},{"id":203,"type":"Note","pos":[-216.8033721255497,-127.12303809741066],"size":[520,280],"flags":{},"order":6,"mode":0,"inputs":[],"outputs":[],"properties":{},"widgets_values":["D - LUMA SOFT MATTE (optional)\n\nBuilds a soft matte straight from the source frames:\n\n  source -> R channel as mask -> back to image -> Levels -> mask\n\nThe Levels black / mid / white values decide how much of the bright\ninterior survives; this is what gives the final mask a gradient\ninstead of a hard cutout.\n\n\"Grow 1px\" is bypassed (mode 4) by default - enable it if the edge\ncomes out too thin. Bypass this whole group if you only want the\nplain SAM3 mask."],"color":"#432","bgcolor":"#653"},{"id":96,"type":"VHS_VideoCombine","pos":[3536.853641277963,-795.4834577579694],"size":[264.9250030517578,238],"flags":{},"order":30,"mode":0,"inputs":[{"localized_name":"images","name":"images","type":"IMAGE","link":220},{"localized_name":"audio","name":"audio","shape":7,"type":"AUDIO","link":null},{"localized_name":"meta_batch","name":"meta_batch","shape":7,"type":"VHS_BatchManager","link":null},{"localized_name":"vae","name":"vae","shape":7,"type":"VAE","link":null},{"localized_name":"frame_rate","name":"frame_rate","type":"FLOAT","widget":{"name":"frame_rate"},"link":null},{"localized_name":"loop_count","name":"loop_count","type":"INT","widget":{"name":"loop_count"},"link":null},{"localized_name":"filename_prefix","name":"filename_prefix","type":"STRING","widget":{"name":"filename_prefix"},"link":null},{"localized_name":"format","name":"format","type":"COMBO","widget":{"name":"format"},"link":null},{"localized_name":"pingpong","name":"pingpong","type":"BOOLEAN","widget":{"name":"pingpong"},"link":null},{"localized_name":"save_output","name":"save_output","type":"BOOLEAN","widget":{"name":"save_output"},"link":null}],"outputs":[{"localized_name":"Filenames","name":"Filenames","type":"VHS_FILENAMES","links":null}],"title":"11. Save mask sequence (PNG)","properties":{"cnr_id":"comfyui-videohelpersuite","ver":"4ee72c065db22c9d96c2427954dc69e7b908444b","Node name for S&R":"VHS_VideoCombine"},"widgets_values":{"frame_rate":24,"loop_count":0,"filename_prefix":"mask_out/mask_soft_","format":"video/8bit-png","pingpong":false,"save_output":true,"videopreview":""}},{"id":91,"type":"MaskToImage","pos":[3299.815629783997,-791.5544893018589],"size":[200,40],"flags":{},"order":29,"mode":0,"inputs":[{"localized_name":"mask","name":"mask","type":"MASK","link":233}],"outputs":[{"localized_name":"IMAGE","name":"IMAGE","type":"IMAGE","slot_index":0,"links":[220]}],"title":"10. Final mask -> image","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"MaskToImage"},"widgets_values":[]},{"id":212,"type":"LazySwitchKJ","pos":[2853.659172271326,-791.5544893018589],"size":[397.6000122070312,100],"flags":{},"order":28,"mode":0,"inputs":[{"localized_name":"on_false","name":"on_false","type":"*","link":232},{"localized_name":"on_true","name":"on_true","type":"*","link":221},{"localized_name":"switch","name":"switch","type":"BOOLEAN","widget":{"name":"switch"},"link":null}],"outputs":[{"localized_name":"*","name":"*","type":"*","links":[233]}],"title":"9b. SWITCH 2 - SUBJECT / FULL SHAPE (default: off)","properties":{"cnr_id":"comfyui-kjnodes","ver":"1.4.0","Node name for S&R":"LazySwitchKJ"},"widgets_values":[false],"color":"#232","bgcolor":"#353"},{"id":137,"type":"MaskComposite","pos":[2516.035470522069,-733.6925812879487],"size":[270,126],"flags":{},"order":27,"mode":0,"inputs":[{"localized_name":"destination","name":"destination","type":"MASK","link":231},{"localized_name":"source","name":"source","type":"MASK","link":218},{"localized_name":"x","name":"x","type":"INT","widget":{"name":"x"},"link":null},{"localized_name":"y","name":"y","type":"INT","widget":{"name":"y"},"link":null},{"localized_name":"operation","name":"operation","type":"COMBO","widget":{"name":"operation"},"link":null}],"outputs":[{"localized_name":"MASK","name":"MASK","type":"MASK","links":[221]}],"title":"9a. Add subject / full shape (add)","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"MaskComposite"},"widgets_values":[0,0,"add"]},{"id":211,"type":"Note","pos":[1884.075829685524,-1529.9250947865687],"size":[330,380],"flags":{},"order":8,"mode":0,"inputs":[],"outputs":[],"properties":{},"widgets_values":["MODE SWITCHES (LazySwitchKJ, KJNodes)\n\nDefault = both OFF -> pure SAM3 mask of the DETAIL prompt only.\nThat is the base mode; switch the rest on only when you need more.\n\n  7b  LUMA SOFT MATTE\n      on  -> the luma matte of group D is added in\n      for a soft, graded edge instead of a hard cutout\n\n  9b  SUBJECT / FULL SHAPE\n      on  -> the subject mask (prompt B, curve-shaped) is added in\n      you need the whole silhouette, e.g. as the second operand of a\n      mask operation (add / subtract / intersect) downstream\n\nBoth inputs are lazy: an off branch is NOT executed at all, so the\nbase mode costs one SAM3 pass and nothing else."],"color":"#432","bgcolor":"#653"},{"id":58,"type":"MaskComposite","pos":[1496.1158056541456,-1023.4539583948309],"size":[299.275,130],"flags":{},"order":25,"mode":0,"inputs":[{"localized_name":"destination","name":"destination","type":"MASK","link":206},{"localized_name":"source","name":"source","type":"MASK","link":210},{"localized_name":"x","name":"x","type":"INT","widget":{"name":"x"},"link":null},{"localized_name":"y","name":"y","type":"INT","widget":{"name":"y"},"link":null},{"localized_name":"operation","name":"operation","type":"COMBO","widget":{"name":"operation"},"link":null}],"outputs":[{"localized_name":"MASK","name":"MASK","type":"MASK","slot_index":0,"links":[219]}],"title":"7a. Detail mask + luma soft matte (add)","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"MaskComposite"},"widgets_values":[0,0,"add"]},{"id":89,"type":"CheckpointLoaderSimple","pos":[-327.30313783136904,-924.32064903134],"size":[280,100],"flags":{},"order":0,"mode":0,"inputs":[{"localized_name":"ckpt_name","name":"ckpt_name","type":"COMBO","widget":{"name":"ckpt_name"},"link":null}],"outputs":[{"localized_name":"MODEL","name":"MODEL","type":"MODEL","slot_index":0,"links":[1,155]},{"localized_name":"CLIP","name":"CLIP","type":"CLIP","slot_index":1,"links":[2,156]},{"localized_name":"VAE","name":"VAE","type":"VAE","links":null}],"title":"1. SAM3 model (checkpoint loader)","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"CheckpointLoaderSimple"},"widgets_values":["sam3.1_multiplex_fp16.safetensors"]},{"id":141,"type":"ImageToMask","pos":[2165.0296719650055,-709.3608087706484],"size":[270,58],"flags":{},"order":24,"mode":0,"inputs":[{"localized_name":"image","name":"image","type":"IMAGE","link":217},{"localized_name":"channel","name":"channel","type":"COMBO","widget":{"name":"channel"},"link":null}],"outputs":[{"localized_name":"MASK","name":"MASK","type":"MASK","links":[218]}],"title":"8c. Image -> mask","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"ImageToMask"},"widgets_values":["red"]},{"id":140,"type":"dc06fff6-22dc-45f8-9c4f-0e3992bca2e3","pos":[1785.8132656480939,-712.9936913793026],"size":[343.2500061035156,420],"flags":{},"order":22,"mode":0,"inputs":[{"label":"image","localized_name":"images.image0","name":"images.image0","type":"IMAGE","link":215}],"outputs":[{"label":"IMAGE","localized_name":"IMAGE0","name":"IMAGE0","type":"IMAGE","links":[217]}],"title":"8b. Color Curves - shape subject matte falloff","properties":{"proxyWidgets":[["4","curve"],["5","curve"],["6","curve"],["7","curve"],["8","$$canvas-image-preview"]],"cnr_id":"comfy-core","ver":"0.21.1"},"widgets_values":[]},{"id":126,"type":"MaskToImage","pos":[1524.2853396617875,-712.3132445822519],"size":[215.82500305175782,40],"flags":{},"order":20,"mode":0,"inputs":[{"localized_name":"mask","name":"mask","type":"MASK","link":209}],"outputs":[{"localized_name":"IMAGE","name":"IMAGE","type":"IMAGE","slot_index":0,"links":[215]}],"title":"8a. Subject mask -> image","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"MaskToImage"},"widgets_values":[]},{"id":204,"type":"Note","pos":[3366.343939591594,-486.2199883829999],"size":[440,300],"flags":{},"order":7,"mode":0,"inputs":[],"outputs":[],"properties":{},"widgets_values":["E - COMBINE + OUTPUT\n\nColor Curves (subgraph) reshapes the subject matte falloff before it\nis added in - flatten the RGB master curve to reduce its influence.\n\nBoth MaskComposite nodes use \"add\"; switch to \"multiply\" if you want\nthe intersection of the two masks instead of the union.\n\nSave: 8-bit PNG sequence, filename_prefix = <subfolder>/<name>_\nFiles land in ComfyUI/output/<subfolder>/ ready to be imported as an\nimage sequence in a compositor."],"color":"#432","bgcolor":"#653"},{"id":136,"type":"Note","pos":[-1683.54016469155,-231.60078126782435],"size":[560,300],"flags":{},"order":1,"mode":0,"inputs":[],"outputs":[],"properties":{},"widgets_values":["A - CHUNKED PROCESSING\n\nLong sequences are processed in fixed-size chunks so VRAM stays flat.\n\n  Chunk index  (PrimitiveInt)   0, 1, 2, ...   mode: increment\n  Chunk offset (MathExpression) index * CHUNK -> skip_first_frames\n  Load Video   frame_load_cap = CHUNK\n\nThe number in the expression (a * 48) MUST match frame_load_cap.\n\nUsage:\n  1. set the chunk index back to 0\n  2. enable Auto Queue and let it run through the sequence\n  3. when done: reset the chunk index to 0 and turn Auto Queue off\n\nEach run writes its own numbered batch of PNGs, so the chunks stay\nin order on disk."],"color":"#432","bgcolor":"#653"},{"id":57,"type":"VHS_LoadVideo","pos":[-864.9303127074451,-513.0967520601986],"size":[402.6499938964844,310],"flags":{},"order":12,"mode":0,"inputs":[{"localized_name":"meta_batch","name":"meta_batch","shape":7,"type":"VHS_BatchManager","link":null},{"localized_name":"vae","name":"vae","shape":7,"type":"VAE","link":null},{"localized_name":"video","name":"video","type":"COMBO","widget":{"name":"video"},"link":null},{"localized_name":"force_rate","name":"force_rate","type":"FLOAT","widget":{"name":"force_rate"},"link":null},{"localized_name":"custom_width","name":"custom_width","type":"INT","widget":{"name":"custom_width"},"link":null},{"localized_name":"custom_height","name":"custom_height","type":"INT","widget":{"name":"custom_height"},"link":null},{"localized_name":"frame_load_cap","name":"frame_load_cap","type":"INT","widget":{"name":"frame_load_cap"},"link":null},{"localized_name":"skip_first_frames","name":"skip_first_frames","type":"INT","widget":{"name":"skip_first_frames"},"link":212},{"localized_name":"select_every_nth","name":"select_every_nth","type":"INT","widget":{"name":"select_every_nth"},"link":null},{"localized_name":"format","name":"format","shape":7,"type":"COMBO","widget":{"name":"format"},"link":null}],"outputs":[{"localized_name":"IMAGE","name":"IMAGE","type":"IMAGE","slot_index":0,"links":[4,5,161]},{"localized_name":"frame_count","name":"frame_count","type":"INT","links":null},{"localized_name":"audio","name":"audio","type":"AUDIO","links":null},{"localized_name":"video_info","name":"video_info","type":"VHS_VIDEOINFO","links":null}],"title":"3. Load video chunk (frame_load_cap = chunk size)","properties":{"cnr_id":"comfyui-videohelpersuite","ver":"4ee72c065db22c9d96c2427954dc69e7b908444b","Node name for S&R":"VHS_LoadVideo"},"widgets_values":{"video":"input_video.mp4","force_rate":0,"custom_width":0,"custom_height":0,"frame_load_cap":48,"skip_first_frames":0,"select_every_nth":1,"format":"AnimateDiff","videopreview":{"hidden":false,"paused":false,"params":{"filename":"input_video.mp4","type":"input","format":"video/mp4","force_rate":0,"frame_load_cap":48,"skip_first_frames":0,"select_every_nth":1}}}},{"id":200,"type":"Note","pos":[-1695.4506110442524,-1111.0426596941336],"size":[560,500],"flags":{},"order":3,"mode":0,"inputs":[],"outputs":[],"properties":{},"widgets_values":["SAM3 SOFT MATTE MASK - OVERVIEW\n\nText-prompted segmentation (SAM3) blended with a luma-derived soft\nmatte, written out as a PNG mask sequence. Built for pulling a small\ndetail (an eye, a highlight, a logo) out of longer footage.\n\n  A  chunked frame loading - long footage in fixed-size chunks\n  B  SAM3 checkpoint + two text prompts\n  C  SAM3 detection -> grow / blur per branch\n  D  optional luma soft matte from the source frames\n  E  masks combined -> saved as a PNG sequence\n\nRequired custom nodes:\n  ComfyUI-VideoHelperSuite  (VHS_LoadVideo, VHS_VideoCombine)\n  ComfyUI-KJNodes           (GrowMaskWithBlur)\n  WAS Node Suite            (Image Levels Adjustment)\n  pythongosssss custom-scripts (MathExpression)\n\nRead the note inside each group before changing values."],"color":"#432","bgcolor":"#653"}],"links":[[1,89,0,88,0,"MODEL"],[2,89,1,90,0,"CLIP"],[3,90,0,88,2,"CONDITIONING"],[4,57,0,88,1,"IMAGE"],[5,57,0,20,0,"IMAGE"],[10,20,0,100,0,"MASK"],[13,101,0,102,0,"MASK"],[144,100,0,117,0,"IMAGE"],[145,117,0,101,0,"IMAGE"],[154,119,0,118,2,"CONDITIONING"],[155,89,0,118,0,"MODEL"],[156,89,1,119,0,"CLIP"],[161,57,0,118,1,"IMAGE"],[206,131,0,58,0,"MASK"],[207,88,0,131,0,"MASK"],[208,118,0,133,0,"MASK"],[209,133,0,126,0,"MASK"],[210,102,0,58,1,"MASK"],[211,135,0,134,0,"INT"],[212,134,0,57,7,"INT"],[215,126,0,140,0,"IMAGE"],[217,140,0,141,0,"IMAGE"],[218,141,0,137,1,"MASK"],[219,58,0,210,1,"*"],[220,91,0,96,0,"IMAGE"],[221,137,0,212,1,"*"],[230,131,0,210,0,"*"],[231,210,0,137,0,"*"],[232,210,0,212,0,"*"],[233,212,0,91,0,"*"]],"groups":[{"id":1,"title":"A - Chunked input","bounding":[-1699.7012961923951,-583.9230442695136,1314.1892690325076,1006.9056241717115],"color":"#3f789e","flags":{}},{"id":2,"title":"B - Model + prompts","bounding":[-377.5820100213178,-1079.1260137234092,980,620],"color":"#88A","flags":{}},{"id":3,"title":"C - SAM3 segmentation","bounding":[620,-1440,760,1000],"color":"#3f789e","flags":{}},{"id":4,"title":"D - Luma soft matte","bounding":[-220,-420,1601.3233879766537,245.42686652055443],"color":"#A88","flags":{}},{"id":5,"title":"E - Combine + output","bounding":[1420,-1180,2409.644777846419,1061.6398508365185],"color":"#3f789e","flags":{}}],"definitions":{"subgraphs":[{"id":"dc06fff6-22dc-45f8-9c4f-0e3992bca2e3","version":1,"state":{"lastGroupId":5,"lastNodeId":212,"lastLinkId":233,"lastRerouteId":0},"revision":0,"config":{},"name":"Color Curves","description":"Fine-tunes tone and color with per-channel curve adjustments using a real-time GPU fragment shader.","inputNode":{"id":-10,"bounding":[2660,-4500,120,60]},"outputNode":{"id":-20,"bounding":[4270,-4500,120,60]},"inputs":[{"id":"abc345b7-f55e-4f32-a11d-3aa4c2b0936b","name":"images.image0","type":"IMAGE","linkIds":[29,34],"localized_name":"images.image0","label":"image","pos":[2760,-4480]}],"outputs":[{"id":"eb0ec079-46da-4408-8263-9ef85569d33d","name":"IMAGE0","type":"IMAGE","linkIds":[28],"localized_name":"IMAGE0","label":"IMAGE","pos":[4290,-4480]}],"widgets":[],"nodes":[{"id":4,"type":"CurveEditor","pos":[3060,-4500],"size":[270,200],"flags":{},"order":0,"mode":0,"inputs":[{"label":"histogram","localized_name":"histogram","name":"histogram","shape":7,"type":"HISTOGRAM","link":35},{"label":"curve","localized_name":"curve","name":"curve","type":"CURVE","widget":{"name":"curve"},"link":null}],"outputs":[{"localized_name":"curve","name":"curve","type":"CURVE","links":[30]}],"title":"RGB Master","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"CurveEditor"},"widgets_values":[{"points":[[0,0],[1,0.13431911967276733]],"interpolation":"monotone_cubic"}]},{"id":5,"type":"CurveEditor","pos":[3060,-4250],"size":[270,200],"flags":{},"order":1,"mode":0,"inputs":[{"label":"histogram","localized_name":"histogram","name":"histogram","shape":7,"type":"HISTOGRAM","link":36},{"label":"curve","localized_name":"curve","name":"curve","type":"CURVE","widget":{"name":"curve"},"link":null}],"outputs":[{"localized_name":"curve","name":"curve","type":"CURVE","links":[31]}],"title":"Red","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"CurveEditor"},"widgets_values":[{"points":[[0,0],[1,1]],"interpolation":"monotone_cubic"}]},{"id":6,"type":"CurveEditor","pos":[3060,-4000],"size":[270,200],"flags":{},"order":2,"mode":0,"inputs":[{"label":"histogram","localized_name":"histogram","name":"histogram","shape":7,"type":"HISTOGRAM","link":37},{"label":"curve","localized_name":"curve","name":"curve","type":"CURVE","widget":{"name":"curve"},"link":null}],"outputs":[{"localized_name":"curve","name":"curve","type":"CURVE","links":[32]}],"title":"Green","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"CurveEditor"},"widgets_values":[{"points":[[0,0],[1,1]],"interpolation":"monotone_cubic"}]},{"id":7,"type":"CurveEditor","pos":[3060,-3750],"size":[270,200],"flags":{},"order":3,"mode":0,"inputs":[{"label":"histogram","localized_name":"histogram","name":"histogram","shape":7,"type":"HISTOGRAM","link":38},{"label":"curve","localized_name":"curve","name":"curve","type":"CURVE","widget":{"name":"curve"},"link":null}],"outputs":[{"localized_name":"curve","name":"curve","type":"CURVE","links":[33]}],"title":"Blue","properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"CurveEditor"},"widgets_values":[{"points":[[0,0],[1,1]],"interpolation":"monotone_cubic"}]},{"id":8,"type":"GLSLShader","pos":[3590,-4500],"size":[420,272],"flags":{},"order":4,"mode":0,"inputs":[{"label":"image0","localized_name":"images.image0","name":"images.image0","type":"IMAGE","link":29},{"label":"image1","localized_name":"images.image1","name":"images.image1","shape":7,"type":"IMAGE","link":null},{"label":"u_float0","localized_name":"floats.u_float0","name":"floats.u_float0","shape":7,"type":"FLOAT","link":null},{"label":"u_int0","localized_name":"ints.u_int0","name":"ints.u_int0","shape":7,"type":"INT","link":null},{"label":"u_bool0","localized_name":"bools.u_bool0","name":"bools.u_bool0","shape":7,"type":"BOOLEAN","link":null},{"label":"u_curve0","localized_name":"curves.u_curve0","name":"curves.u_curve0","shape":7,"type":"CURVE","link":30},{"label":"u_curve1","localized_name":"curves.u_curve1","name":"curves.u_curve1","shape":7,"type":"CURVE","link":31},{"label":"u_curve2","localized_name":"curves.u_curve2","name":"curves.u_curve2","shape":7,"type":"CURVE","link":32},{"label":"u_curve3","localized_name":"curves.u_curve3","name":"curves.u_curve3","shape":7,"type":"CURVE","link":33},{"localized_name":"fragment_shader","name":"fragment_shader","type":"STRING","widget":{"name":"fragment_shader"},"link":null},{"localized_name":"size_mode","name":"size_mode","type":"COMFY_DYNAMICCOMBO_V3","widget":{"name":"size_mode"},"link":null}],"outputs":[{"localized_name":"IMAGE0","name":"IMAGE0","type":"IMAGE","links":[28]},{"localized_name":"IMAGE1","name":"IMAGE1","type":"IMAGE","links":null},{"localized_name":"IMAGE2","name":"IMAGE2","type":"IMAGE","links":null},{"localized_name":"IMAGE3","name":"IMAGE3","type":"IMAGE","links":null}],"properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"GLSLShader"},"widgets_values":["#version 300 es\nprecision highp float;\n\nuniform sampler2D u_image0;\nuniform sampler2D u_curve0;  // RGB master curve (256x1 LUT)\nuniform sampler2D u_curve1;  // Red channel curve\nuniform sampler2D u_curve2;  // Green channel curve\nuniform sampler2D u_curve3;  // Blue channel curve\n\nin vec2 v_texCoord;\nlayout(location = 0) out vec4 fragColor0;\n\n// GIMP-compatible curve lookup with manual linear interpolation.\n// Matches gimp_curve_map_value_inline() from gimpcurve-map.c:\n//   index = value * (n_samples - 1)\n//   f = fract(index)\n//   result = (1-f) * samples[floor] + f * samples[ceil]\n//\n// Uses texelFetch (NEAREST) to avoid GPU half-texel offset issues\n// that occur with texture() + GL_LINEAR on small 256x1 LUTs.\nfloat applyCurve(sampler2D curve, float value) {\n    value = clamp(value, 0.0, 1.0);\n\n    float pos = value * 255.0;\n    int lo = int(floor(pos));\n    int hi = min(lo + 1, 255);\n    float f = pos - float(lo);\n\n    float a = texelFetch(curve, ivec2(lo, 0), 0).r;\n    float b = texelFetch(curve, ivec2(hi, 0), 0).r;\n\n    return a + f * (b - a);\n}\n\nvoid main() {\n    vec4 color = texture(u_image0, v_texCoord);\n\n    // GIMP order: per-channel curves first, then RGB master curve.\n    // See gimp_curve_map_pixels() default case in gimpcurve-map.c:\n    //   dest = colors_curve( channel_curve( src ) )\n    float tmp_r = applyCurve(u_curve1, color.r);\n    float tmp_g = applyCurve(u_curve2, color.g);\n    float tmp_b = applyCurve(u_curve3, color.b);\n    color.r = applyCurve(u_curve0, tmp_r);\n    color.g = applyCurve(u_curve0, tmp_g);\n    color.b = applyCurve(u_curve0, tmp_b);\n\n    fragColor0 = vec4(color.rgb, color.a);\n}\n","from_input"]},{"id":9,"type":"ImageHistogram","pos":[2800,-4300],"size":[210,150],"flags":{},"order":5,"mode":0,"inputs":[{"label":"image","localized_name":"image","name":"image","type":"IMAGE","link":34}],"outputs":[{"localized_name":"rgb","name":"rgb","type":"HISTOGRAM","links":[35]},{"localized_name":"luminance","name":"luminance","type":"HISTOGRAM","links":[]},{"localized_name":"red","name":"red","type":"HISTOGRAM","links":[36]},{"localized_name":"green","name":"green","type":"HISTOGRAM","links":[37]},{"localized_name":"blue","name":"blue","type":"HISTOGRAM","links":[38]}],"properties":{"cnr_id":"comfy-core","ver":"0.21.1","Node name for S&R":"ImageHistogram"},"widgets_values":[]}],"groups":[],"links":[{"id":29,"origin_id":-10,"origin_slot":0,"target_id":8,"target_slot":0,"type":"IMAGE"},{"id":28,"origin_id":8,"origin_slot":0,"target_id":-20,"target_slot":0,"type":"IMAGE"},{"id":30,"origin_id":4,"origin_slot":0,"target_id":8,"target_slot":5,"type":"CURVE"},{"id":31,"origin_id":5,"origin_slot":0,"target_id":8,"target_slot":6,"type":"CURVE"},{"id":32,"origin_id":6,"origin_slot":0,"target_id":8,"target_slot":7,"type":"CURVE"},{"id":33,"origin_id":7,"origin_slot":0,"target_id":8,"target_slot":8,"type":"CURVE"},{"id":34,"origin_id":-10,"origin_slot":0,"target_id":9,"target_slot":0,"type":"IMAGE"},{"id":35,"origin_id":9,"origin_slot":0,"target_id":4,"target_slot":0,"type":"HISTOGRAM"},{"id":36,"origin_id":9,"origin_slot":2,"target_id":5,"target_slot":0,"type":"HISTOGRAM"},{"id":37,"origin_id":9,"origin_slot":3,"target_id":6,"target_slot":0,"type":"HISTOGRAM"},{"id":38,"origin_id":9,"origin_slot":4,"target_id":7,"target_slot":0,"type":"HISTOGRAM"}],"extra":{"workflowRendererVersion":"LG"}}]},"config":{},"extra":{"ds":{"scale":0.5209868481924411,"offset":[1852.120244265339,1465.0639106958924]}},"version":0.4}
+{
+ "id": "290481bf-cc58-4437-bb64-cbae23fdbc21",
+ "revision": 0,
+ "last_node_id": 223,
+ "last_link_id": 245,
+ "nodes": [
+  {
+   "id": 119,
+   "type": "CLIPTextEncode",
+   "pos": [
+    213.2066216216799,
+    -703.3157380337678
+   ],
+   "size": [
+    380,
+    180
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "clip",
+     "name": "clip",
+     "type": "CLIP",
+     "link": 156
+    },
+    {
+     "localized_name": "text",
+     "name": "text",
+     "type": "STRING",
+     "widget": {
+      "name": "text"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "CONDITIONING",
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "slot_index": 0,
+     "links": [
+      154
+     ]
+    }
+   ],
+   "title": "2b. Prompt B - main subject",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "CLIPTextEncode"
+   },
+   "widgets_values": [
+    "translucent fish"
+   ]
+  },
+  {
+   "id": 88,
+   "type": "SAM3_Detect",
+   "pos": [
+    653.3808872749175,
+    -1064.0854727508683
+   ],
+   "size": [
+    280,
+    220
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 1
+    },
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 4
+    },
+    {
+     "localized_name": "conditioning",
+     "name": "conditioning",
+     "shape": 7,
+     "type": "CONDITIONING",
+     "link": 3
+    },
+    {
+     "label": "bboxes",
+     "localized_name": "bboxes",
+     "name": "bboxes",
+     "shape": 7,
+     "type": "BOUNDING_BOX",
+     "link": null
+    },
+    {
+     "label": "positive_coords",
+     "localized_name": "positive_coords",
+     "name": "positive_coords",
+     "shape": 7,
+     "type": "STRING",
+     "link": null
+    },
+    {
+     "label": "negative_coords",
+     "localized_name": "negative_coords",
+     "name": "negative_coords",
+     "shape": 7,
+     "type": "STRING",
+     "link": null
+    },
+    {
+     "localized_name": "threshold",
+     "name": "threshold",
+     "type": "FLOAT",
+     "widget": {
+      "name": "threshold"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "refine_iterations",
+     "name": "refine_iterations",
+     "type": "INT",
+     "widget": {
+      "name": "refine_iterations"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "individual_masks",
+     "name": "individual_masks",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "individual_masks"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "masks",
+     "name": "masks",
+     "type": "MASK",
+     "slot_index": 0,
+     "links": [
+      244
+     ]
+    },
+    {
+     "localized_name": "bboxes",
+     "name": "bboxes",
+     "type": "BOUNDING_BOX",
+     "links": null
+    }
+   ],
+   "title": "4a. SAM3 Detect - detail (prompt A)",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "SAM3_Detect"
+   },
+   "widgets_values": [
+    0.5,
+    2,
+    false
+   ]
+  },
+  {
+   "id": 90,
+   "type": "CLIPTextEncode",
+   "pos": [
+    211.4567229137653,
+    -1011.770839545651
+   ],
+   "size": [
+    380,
+    180
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "clip",
+     "name": "clip",
+     "type": "CLIP",
+     "link": 2
+    },
+    {
+     "localized_name": "text",
+     "name": "text",
+     "type": "STRING",
+     "widget": {
+      "name": "text"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "CONDITIONING",
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "slot_index": 0,
+     "links": [
+      3
+     ]
+    }
+   ],
+   "title": "2a. Prompt A - detail target",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "CLIPTextEncode"
+   },
+   "widgets_values": [
+    "translucent fish's eye"
+   ]
+  },
+  {
+   "id": 89,
+   "type": "CheckpointLoaderSimple",
+   "pos": [
+    -295.83911176324216,
+    -873.6286648227862
+   ],
+   "size": [
+    280,
+    100
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "ckpt_name",
+     "name": "ckpt_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "ckpt_name"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MODEL",
+     "name": "MODEL",
+     "type": "MODEL",
+     "slot_index": 0,
+     "links": [
+      1,
+      155
+     ]
+    },
+    {
+     "localized_name": "CLIP",
+     "name": "CLIP",
+     "type": "CLIP",
+     "slot_index": 1,
+     "links": [
+      2,
+      156
+     ]
+    },
+    {
+     "localized_name": "VAE",
+     "name": "VAE",
+     "type": "VAE",
+     "links": null
+    }
+   ],
+   "title": "1. SAM3 model (checkpoint loader)",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "CheckpointLoaderSimple"
+   },
+   "widgets_values": [
+    "sam3.1_multiplex_fp16.safetensors"
+   ]
+  },
+  {
+   "id": 131,
+   "type": "GrowMaskWithBlur",
+   "pos": [
+    1046.78508943118,
+    -1088.410630934884
+   ],
+   "size": [
+    299.8999938964844,
+    246
+   ],
+   "flags": {},
+   "order": 10,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "link": 207
+    },
+    {
+     "localized_name": "expand",
+     "name": "expand",
+     "type": "INT",
+     "widget": {
+      "name": "expand"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "incremental_expandrate",
+     "name": "incremental_expandrate",
+     "type": "FLOAT",
+     "widget": {
+      "name": "incremental_expandrate"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "tapered_corners",
+     "name": "tapered_corners",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "tapered_corners"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "flip_input",
+     "name": "flip_input",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "flip_input"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "blur_radius",
+     "name": "blur_radius",
+     "type": "FLOAT",
+     "widget": {
+      "name": "blur_radius"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "lerp_alpha",
+     "name": "lerp_alpha",
+     "type": "FLOAT",
+     "widget": {
+      "name": "lerp_alpha"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "decay_factor",
+     "name": "decay_factor",
+     "type": "FLOAT",
+     "widget": {
+      "name": "decay_factor"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "fill_holes",
+     "name": "fill_holes",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "fill_holes"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "links": [
+      236
+     ]
+    },
+    {
+     "localized_name": "mask_inverted",
+     "name": "mask_inverted",
+     "type": "MASK",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfyui-kjnodes",
+    "ver": "1.4.0",
+    "Node name for S&R": "GrowMaskWithBlur"
+   },
+   "widgets_values": [
+    10,
+    0,
+    true,
+    false,
+    10,
+    1,
+    1,
+    false
+   ],
+   "title": "5a. Grow + blur - detail mask"
+  },
+  {
+   "id": 118,
+   "type": "SAM3_Detect",
+   "pos": [
+    657.6305627714013,
+    -740.6323948534248
+   ],
+   "size": [
+    280,
+    220
+   ],
+   "flags": {},
+   "order": 9,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 155
+    },
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 161
+    },
+    {
+     "localized_name": "conditioning",
+     "name": "conditioning",
+     "shape": 7,
+     "type": "CONDITIONING",
+     "link": 154
+    },
+    {
+     "label": "bboxes",
+     "localized_name": "bboxes",
+     "name": "bboxes",
+     "shape": 7,
+     "type": "BOUNDING_BOX",
+     "link": null
+    },
+    {
+     "label": "positive_coords",
+     "localized_name": "positive_coords",
+     "name": "positive_coords",
+     "shape": 7,
+     "type": "STRING",
+     "link": null
+    },
+    {
+     "label": "negative_coords",
+     "localized_name": "negative_coords",
+     "name": "negative_coords",
+     "shape": 7,
+     "type": "STRING",
+     "link": null
+    },
+    {
+     "localized_name": "threshold",
+     "name": "threshold",
+     "type": "FLOAT",
+     "widget": {
+      "name": "threshold"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "refine_iterations",
+     "name": "refine_iterations",
+     "type": "INT",
+     "widget": {
+      "name": "refine_iterations"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "individual_masks",
+     "name": "individual_masks",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "individual_masks"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "masks",
+     "name": "masks",
+     "type": "MASK",
+     "slot_index": 0,
+     "links": [
+      208,
+      245
+     ]
+    },
+    {
+     "localized_name": "bboxes",
+     "name": "bboxes",
+     "type": "BOUNDING_BOX",
+     "links": null
+    }
+   ],
+   "title": "4b. SAM3 Detect - subject (prompt B)",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "SAM3_Detect"
+   },
+   "widgets_values": [
+    0.5,
+    2,
+    false
+   ]
+  },
+  {
+   "id": 133,
+   "type": "GrowMaskWithBlur",
+   "pos": [
+    1049.3645458056396,
+    -736.1069140829961
+   ],
+   "size": [
+    299.8999938964844,
+    246
+   ],
+   "flags": {},
+   "order": 12,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "link": 208
+    },
+    {
+     "localized_name": "expand",
+     "name": "expand",
+     "type": "INT",
+     "widget": {
+      "name": "expand"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "incremental_expandrate",
+     "name": "incremental_expandrate",
+     "type": "FLOAT",
+     "widget": {
+      "name": "incremental_expandrate"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "tapered_corners",
+     "name": "tapered_corners",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "tapered_corners"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "flip_input",
+     "name": "flip_input",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "flip_input"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "blur_radius",
+     "name": "blur_radius",
+     "type": "FLOAT",
+     "widget": {
+      "name": "blur_radius"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "lerp_alpha",
+     "name": "lerp_alpha",
+     "type": "FLOAT",
+     "widget": {
+      "name": "lerp_alpha"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "decay_factor",
+     "name": "decay_factor",
+     "type": "FLOAT",
+     "widget": {
+      "name": "decay_factor"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "fill_holes",
+     "name": "fill_holes",
+     "shape": 7,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "fill_holes"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "links": [
+      209
+     ]
+    },
+    {
+     "localized_name": "mask_inverted",
+     "name": "mask_inverted",
+     "type": "MASK",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfyui-kjnodes",
+    "ver": "1.4.0",
+    "Node name for S&R": "GrowMaskWithBlur"
+   },
+   "widgets_values": [
+    0,
+    0,
+    true,
+    false,
+    1,
+    1,
+    1,
+    false
+   ],
+   "title": "5b. Grow + blur - subject mask"
+  },
+  {
+   "id": 100,
+   "type": "MaskToImage",
+   "pos": [
+    94.30290788717669,
+    -349.04359164594337
+   ],
+   "size": [
+    200,
+    40
+   ],
+   "flags": {},
+   "order": 11,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "link": 10
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "IMAGE",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      144
+     ]
+    }
+   ],
+   "title": "6b. Mask -> image",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "MaskToImage"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 20,
+   "type": "ImageToMask",
+   "pos": [
+    -187.32003856466292,
+    -351.5644847820223
+   ],
+   "size": [
+    240,
+    100
+   ],
+   "flags": {},
+   "order": 8,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 5
+    },
+    {
+     "localized_name": "channel",
+     "name": "channel",
+     "type": "COMBO",
+     "widget": {
+      "name": "channel"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MASK",
+     "name": "MASK",
+     "type": "MASK",
+     "slot_index": 0,
+     "links": [
+      10
+     ]
+    }
+   ],
+   "title": "6a. Source luma -> mask (R channel)",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "ImageToMask"
+   },
+   "widgets_values": [
+    "red"
+   ]
+  },
+  {
+   "id": 101,
+   "type": "ImageToMask",
+   "pos": [
+    682.0198897971565,
+    -349.19129063785584
+   ],
+   "size": [
+    240,
+    100
+   ],
+   "flags": {},
+   "order": 15,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 145
+    },
+    {
+     "localized_name": "channel",
+     "name": "channel",
+     "type": "COMBO",
+     "widget": {
+      "name": "channel"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MASK",
+     "name": "MASK",
+     "type": "MASK",
+     "slot_index": 0,
+     "links": [
+      13
+     ]
+    }
+   ],
+   "title": "6d. Image -> soft mask",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "ImageToMask"
+   },
+   "widgets_values": [
+    "red"
+   ]
+  },
+  {
+   "id": 102,
+   "type": "GrowMask",
+   "pos": [
+    1069.6651810111427,
+    -345.935756774388
+   ],
+   "size": [
+    220,
+    100
+   ],
+   "flags": {},
+   "order": 17,
+   "mode": 4,
+   "inputs": [
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "link": 13
+    },
+    {
+     "localized_name": "expand",
+     "name": "expand",
+     "type": "INT",
+     "widget": {
+      "name": "expand"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "tapered_corners",
+     "name": "tapered_corners",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "tapered_corners"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MASK",
+     "name": "MASK",
+     "type": "MASK",
+     "slot_index": 0,
+     "links": [
+      210
+     ]
+    }
+   ],
+   "title": "6e. Grow 1px (bypassed by default)",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "GrowMask"
+   },
+   "widgets_values": [
+    1,
+    false
+   ]
+  },
+  {
+   "id": 136,
+   "type": "Note",
+   "pos": [
+    -1460,
+    -60
+   ],
+   "size": [
+    560,
+    300
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "A - CHUNKED PROCESSING\n\nLong sequences are processed in fixed-size chunks so VRAM stays flat.\n\n  Chunk index  (PrimitiveInt)   0, 1, 2, ...   mode: increment\n  Chunk offset (MathExpression) index * CHUNK -> skip_first_frames\n  Load Video   frame_load_cap = CHUNK\n\nThe number in the expression (a * 48) MUST match frame_load_cap.\n\nUsage:\n  1. set the chunk index back to 0\n  2. enable Auto Queue and let it run through the sequence\n  3. when done: reset the chunk index to 0 and turn Auto Queue off\n\nEach run writes its own numbered batch of PNGs, so the chunks stay\nin order on disk."
+   ],
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 117,
+   "type": "Image Levels Adjustment",
+   "pos": [
+    344.7629392267105,
+    -348.6263125019491
+   ],
+   "size": [
+    280,
+    130
+   ],
+   "flags": {},
+   "order": 13,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 144
+    },
+    {
+     "localized_name": "black_level",
+     "name": "black_level",
+     "type": "FLOAT",
+     "widget": {
+      "name": "black_level"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "mid_level",
+     "name": "mid_level",
+     "type": "FLOAT",
+     "widget": {
+      "name": "mid_level"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "white_level",
+     "name": "white_level",
+     "type": "FLOAT",
+     "widget": {
+      "name": "white_level"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "IMAGE",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": [
+      145
+     ]
+    }
+   ],
+   "title": "6c. Levels - soft matte contrast",
+   "properties": {
+    "cnr_id": "was-ns",
+    "ver": "3.0.1",
+    "Node name for S&R": "Image Levels Adjustment"
+   },
+   "widgets_values": [
+    6,
+    96,
+    255
+   ]
+  },
+  {
+   "id": 135,
+   "type": "PrimitiveInt",
+   "pos": [
+    -1414.888724217075,
+    -344.32696258250303
+   ],
+   "size": [
+    270,
+    82
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "value",
+     "name": "value",
+     "type": "INT",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "INT",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      211
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.6.0",
+    "Node name for S&R": "PrimitiveInt"
+   },
+   "widgets_values": [
+    0,
+    "increment"
+   ],
+   "title": "Chunk index (increment)"
+  },
+  {
+   "id": 58,
+   "type": "MaskComposite",
+   "pos": [
+    1508.6518290597182,
+    -1104.6396520008807
+   ],
+   "size": [
+    280,
+    130
+   ],
+   "flags": {},
+   "order": 19,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "destination",
+     "name": "destination",
+     "type": "MASK",
+     "link": 206
+    },
+    {
+     "localized_name": "source",
+     "name": "source",
+     "type": "MASK",
+     "link": 210
+    },
+    {
+     "localized_name": "x",
+     "name": "x",
+     "type": "INT",
+     "widget": {
+      "name": "x"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "y",
+     "name": "y",
+     "type": "INT",
+     "widget": {
+      "name": "y"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "operation",
+     "name": "operation",
+     "type": "COMBO",
+     "widget": {
+      "name": "operation"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MASK",
+     "name": "MASK",
+     "type": "MASK",
+     "slot_index": 0,
+     "links": [
+      219
+     ]
+    }
+   ],
+   "title": "7a. Detail mask + luma soft matte (add)",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "MaskComposite"
+   },
+   "widgets_values": [
+    0,
+    0,
+    "add"
+   ]
+  },
+  {
+   "id": 126,
+   "type": "MaskToImage",
+   "pos": [
+    1439.5073505510716,
+    -735.9112341269516
+   ],
+   "size": [
+    200,
+    40
+   ],
+   "flags": {},
+   "order": 14,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "link": 209
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "IMAGE",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      215
+     ]
+    }
+   ],
+   "title": "8a. Subject mask -> image",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "MaskToImage"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 141,
+   "type": "ImageToMask",
+   "pos": [
+    1963.1357614159103,
+    -733.8327845919392
+   ],
+   "size": [
+    270,
+    58
+   ],
+   "flags": {},
+   "order": 18,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 217
+    },
+    {
+     "localized_name": "channel",
+     "name": "channel",
+     "type": "COMBO",
+     "widget": {
+      "name": "channel"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MASK",
+     "name": "MASK",
+     "type": "MASK",
+     "links": [
+      218
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "ImageToMask"
+   },
+   "widgets_values": [
+    "red"
+   ],
+   "title": "8c. Image -> mask"
+  },
+  {
+   "id": 140,
+   "type": "dc06fff6-22dc-45f8-9c4f-0e3992bca2e3",
+   "pos": [
+    1665.2013190862951,
+    -737.4657072091205
+   ],
+   "size": [
+    270,
+    420
+   ],
+   "flags": {},
+   "order": 16,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "image",
+     "localized_name": "images.image0",
+     "name": "images.image0",
+     "type": "IMAGE",
+     "link": 215
+    }
+   ],
+   "outputs": [
+    {
+     "label": "IMAGE",
+     "localized_name": "IMAGE0",
+     "name": "IMAGE0",
+     "type": "IMAGE",
+     "links": [
+      217
+     ]
+    }
+   ],
+   "properties": {
+    "proxyWidgets": [
+     [
+      "4",
+      "curve"
+     ],
+     [
+      "5",
+      "curve"
+     ],
+     [
+      "6",
+      "curve"
+     ],
+     [
+      "7",
+      "curve"
+     ],
+     [
+      "8",
+      "$$canvas-image-preview"
+     ]
+    ],
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1"
+   },
+   "widgets_values": [],
+   "title": "8b. Color Curves - shape subject matte falloff"
+  },
+  {
+   "id": 137,
+   "type": "MaskComposite",
+   "pos": [
+    2300.674947719472,
+    -759.0291133823716
+   ],
+   "size": [
+    270,
+    126
+   ],
+   "flags": {},
+   "order": 20,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "destination",
+     "name": "destination",
+     "type": "MASK",
+     "link": 231
+    },
+    {
+     "localized_name": "source",
+     "name": "source",
+     "type": "MASK",
+     "link": 218
+    },
+    {
+     "localized_name": "x",
+     "name": "x",
+     "type": "INT",
+     "widget": {
+      "name": "x"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "y",
+     "name": "y",
+     "type": "INT",
+     "widget": {
+      "name": "y"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "operation",
+     "name": "operation",
+     "type": "COMBO",
+     "widget": {
+      "name": "operation"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MASK",
+     "name": "MASK",
+     "type": "MASK",
+     "links": [
+      221
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "MaskComposite"
+   },
+   "widgets_values": [
+    0,
+    0,
+    "add"
+   ],
+   "title": "9a. Add subject / full shape (add)"
+  },
+  {
+   "id": 91,
+   "type": "MaskToImage",
+   "pos": [
+    3000,
+    -800
+   ],
+   "size": [
+    200,
+    40
+   ],
+   "flags": {},
+   "order": 21,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "link": 233
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "IMAGE",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      220
+     ]
+    }
+   ],
+   "title": "10. Final mask -> image",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "MaskToImage"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 96,
+   "type": "VHS_VideoCombine",
+   "pos": [
+    3230,
+    -780
+   ],
+   "size": [
+    260,
+    238
+   ],
+   "flags": {},
+   "order": 22,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 220
+    },
+    {
+     "localized_name": "audio",
+     "name": "audio",
+     "shape": 7,
+     "type": "AUDIO",
+     "link": null
+    },
+    {
+     "localized_name": "meta_batch",
+     "name": "meta_batch",
+     "shape": 7,
+     "type": "VHS_BatchManager",
+     "link": null
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "shape": 7,
+     "type": "VAE",
+     "link": null
+    },
+    {
+     "localized_name": "frame_rate",
+     "name": "frame_rate",
+     "type": "FLOAT",
+     "widget": {
+      "name": "frame_rate"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "loop_count",
+     "name": "loop_count",
+     "type": "INT",
+     "widget": {
+      "name": "loop_count"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "filename_prefix",
+     "name": "filename_prefix",
+     "type": "STRING",
+     "widget": {
+      "name": "filename_prefix"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "format",
+     "name": "format",
+     "type": "COMBO",
+     "widget": {
+      "name": "format"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "pingpong",
+     "name": "pingpong",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "pingpong"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "save_output",
+     "name": "save_output",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "save_output"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "Filenames",
+     "name": "Filenames",
+     "type": "VHS_FILENAMES",
+     "links": null
+    }
+   ],
+   "title": "11. Save mask sequence (PNG)",
+   "properties": {
+    "cnr_id": "comfyui-videohelpersuite",
+    "ver": "4ee72c065db22c9d96c2427954dc69e7b908444b",
+    "Node name for S&R": "VHS_VideoCombine"
+   },
+   "widgets_values": {
+    "frame_rate": 24,
+    "loop_count": 0,
+    "filename_prefix": "mask_out/mask_soft_",
+    "format": "video/8bit-png",
+    "pingpong": false,
+    "save_output": true
+   }
+  },
+  {
+   "id": 134,
+   "type": "MathExpression|pysssss",
+   "pos": [
+    -1102.4984006976592,
+    -347.2835082940041
+   ],
+   "size": [
+    400,
+    200
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "a",
+     "name": "a",
+     "shape": 7,
+     "type": "INT,FLOAT,IMAGE,LATENT",
+     "link": 211
+    },
+    {
+     "localized_name": "b",
+     "name": "b",
+     "shape": 7,
+     "type": "INT,FLOAT,IMAGE,LATENT",
+     "link": null
+    },
+    {
+     "localized_name": "c",
+     "name": "c",
+     "shape": 7,
+     "type": "INT,FLOAT,IMAGE,LATENT",
+     "link": null
+    },
+    {
+     "localized_name": "expression",
+     "name": "expression",
+     "type": "INT,FLOAT,IMAGE,LATENT",
+     "widget": {
+      "name": "expression"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "INT",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      212
+     ]
+    },
+    {
+     "localized_name": "FLOAT",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfyui-custom-scripts",
+    "ver": "1.2.5"
+   },
+   "widgets_values": [
+    "a * 48"
+   ],
+   "title": "Chunk offset = index * chunk size"
+  },
+  {
+   "id": 57,
+   "type": "VHS_LoadVideo",
+   "pos": [
+    -660.5844905116685,
+    -552.6337089576568
+   ],
+   "size": [
+    280,
+    470
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "meta_batch",
+     "name": "meta_batch",
+     "shape": 7,
+     "type": "VHS_BatchManager",
+     "link": null
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "shape": 7,
+     "type": "VAE",
+     "link": null
+    },
+    {
+     "localized_name": "video",
+     "name": "video",
+     "type": "COMBO",
+     "widget": {
+      "name": "video"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "force_rate",
+     "name": "force_rate",
+     "type": "FLOAT",
+     "widget": {
+      "name": "force_rate"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "custom_width",
+     "name": "custom_width",
+     "type": "INT",
+     "widget": {
+      "name": "custom_width"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "custom_height",
+     "name": "custom_height",
+     "type": "INT",
+     "widget": {
+      "name": "custom_height"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "frame_load_cap",
+     "name": "frame_load_cap",
+     "type": "INT",
+     "widget": {
+      "name": "frame_load_cap"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "skip_first_frames",
+     "name": "skip_first_frames",
+     "type": "INT",
+     "widget": {
+      "name": "skip_first_frames"
+     },
+     "link": 212
+    },
+    {
+     "localized_name": "select_every_nth",
+     "name": "select_every_nth",
+     "type": "INT",
+     "widget": {
+      "name": "select_every_nth"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "format",
+     "name": "format",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "format"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "IMAGE",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      4,
+      5,
+      161,
+      234,
+      242
+     ]
+    },
+    {
+     "localized_name": "frame_count",
+     "name": "frame_count",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "localized_name": "audio",
+     "name": "audio",
+     "type": "AUDIO",
+     "links": null
+    },
+    {
+     "localized_name": "video_info",
+     "name": "video_info",
+     "type": "VHS_VIDEOINFO",
+     "links": null
+    }
+   ],
+   "title": "3. Load video chunk (frame_load_cap = chunk size)",
+   "properties": {
+    "cnr_id": "comfyui-videohelpersuite",
+    "ver": "4ee72c065db22c9d96c2427954dc69e7b908444b",
+    "Node name for S&R": "VHS_LoadVideo"
+   },
+   "widgets_values": {
+    "video": "input_video.mp4",
+    "force_rate": 0,
+    "custom_width": 0,
+    "custom_height": 0,
+    "frame_load_cap": 48,
+    "skip_first_frames": 0,
+    "select_every_nth": 1,
+    "format": "AnimateDiff"
+   }
+  },
+  {
+   "type": "Note",
+   "flags": {},
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "color": "#432",
+   "bgcolor": "#653",
+   "id": 200,
+   "pos": [
+    -1460,
+    -1120
+   ],
+   "size": [
+    560,
+    500
+   ],
+   "order": 23,
+   "widgets_values": [
+    "SAM3 SOFT MATTE MASK - OVERVIEW\n\nText-prompted segmentation (SAM3) blended with a luma-derived soft\nmatte, written out as a PNG mask sequence. Built for pulling a small\ndetail (an eye, a highlight, a logo) out of longer footage.\n\n  A  chunked frame loading - long footage in fixed-size chunks\n  B  SAM3 checkpoint + two text prompts\n  C  SAM3 detection -> grow / blur per branch\n  D  optional luma soft matte from the source frames\n  E  masks combined -> saved as a PNG sequence\n  G  same mask as alpha on the source -> RGBA cut-out\n\nRequired custom nodes:\n  ComfyUI-VideoHelperSuite  (VHS_LoadVideo, VHS_VideoCombine)\n  ComfyUI-KJNodes           (GrowMaskWithBlur)\n  WAS Node Suite            (Image Levels Adjustment)\n  pythongosssss custom-scripts (MathExpression)\n  ComfyUI_LayerStyle           (only for switch 5c)\n\nRead the note inside each group before changing values."
+   ]
+  },
+  {
+   "type": "Note",
+   "flags": {},
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "color": "#432",
+   "bgcolor": "#653",
+   "id": 201,
+   "pos": [
+    -296,
+    -740
+   ],
+   "size": [
+    440,
+    260
+   ],
+   "order": 24,
+   "widgets_values": [
+    "B - MODEL + PROMPTS\n\nCheckpoint: a SAM3 model placed in ComfyUI/models/checkpoints.\n\n  Prompt A = the small detail to isolate   (e.g. \"fish eye\")\n  Prompt B = the larger subject it sits on (e.g. \"fish\")\n\nShort, concrete noun phrases work best. Lower the SAM3 threshold if\nthe detection drops out on some frames, raise it if it starts\ngrabbing the background."
+   ]
+  },
+  {
+   "type": "Note",
+   "flags": {},
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "color": "#432",
+   "bgcolor": "#653",
+   "id": 202,
+   "pos": [
+    653,
+    -1400
+   ],
+   "size": [
+    690,
+    230
+   ],
+   "order": 25,
+   "widgets_values": [
+    "C - DETECTION + EDGE SOFTENING\n\nSAM3 Detect returns a hard mask per frame; GrowMaskWithBlur turns it\ninto something compositable.\n\n  expand      dilate in pixels\n  blur_radius feather in pixels\n\n  detail branch  generous expand + blur - hides detection jitter\n  subject branch almost no expand, 1 px blur - keeps the silhouette\n\nindividual_masks = false -> one merged mask per frame.\nrefine_iterations trades speed for edge accuracy."
+   ]
+  },
+  {
+   "type": "Note",
+   "flags": {},
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "color": "#432",
+   "bgcolor": "#653",
+   "id": 203,
+   "pos": [
+    -187,
+    -180
+   ],
+   "size": [
+    520,
+    280
+   ],
+   "order": 26,
+   "widgets_values": [
+    "D - LUMA SOFT MATTE (optional)\n\nBuilds a soft matte straight from the source frames:\n\n  source -> R channel as mask -> back to image -> Levels -> mask\n\nThe Levels black / mid / white values decide how much of the bright\ninterior survives; this is what gives the final mask a gradient\ninstead of a hard cutout.\n\n\"Grow 1px\" is bypassed (mode 4) by default - enable it if the edge\ncomes out too thin. Bypass this whole group if you only want the\nplain SAM3 mask."
+   ]
+  },
+  {
+   "type": "Note",
+   "flags": {},
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "color": "#432",
+   "bgcolor": "#653",
+   "id": 204,
+   "pos": [
+    3230,
+    -460
+   ],
+   "size": [
+    440,
+    300
+   ],
+   "order": 27,
+   "widgets_values": [
+    "E - COMBINE + OUTPUT\n\nColor Curves (subgraph) reshapes the subject matte falloff before it\nis added in - flatten the RGB master curve to reduce its influence.\n\nBoth MaskComposite nodes use \"add\"; switch to \"multiply\" if you want\nthe intersection of the two masks instead of the union.\n\nSave: 8-bit PNG sequence, filename_prefix = <subfolder>/<name>_\nFiles land in ComfyUI/output/<subfolder>/ ready to be imported as an\nimage sequence in a compositor."
+   ]
+  },
+  {
+   "id": 210,
+   "type": "LazySwitchKJ",
+   "pos": [
+    1870,
+    -1090
+   ],
+   "size": [
+    300,
+    100
+   ],
+   "flags": {},
+   "order": 20,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "switch",
+     "name": "switch",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "switch"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "on_false",
+     "name": "on_false",
+     "type": "*",
+     "link": 230
+    },
+    {
+     "localized_name": "on_true",
+     "name": "on_true",
+     "type": "*",
+     "link": 219
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "*",
+     "name": "*",
+     "type": "*",
+     "links": [
+      231,
+      232
+     ]
+    }
+   ],
+   "title": "7b. SWITCH 1 - LUMA SOFT MATTE (default: off)",
+   "properties": {
+    "cnr_id": "comfyui-kjnodes",
+    "ver": "1.4.0",
+    "Node name for S&R": "LazySwitchKJ"
+   },
+   "widgets_values": [
+    false
+   ],
+   "color": "#232",
+   "bgcolor": "#353"
+  },
+  {
+   "id": 211,
+   "type": "Note",
+   "pos": [
+    1870,
+    -950
+   ],
+   "size": [
+    340,
+    420
+   ],
+   "flags": {},
+   "order": 21,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "MODE SWITCHES (LazySwitchKJ, KJNodes)\n\n  4c  TARGET          off = detail prompt 2a\n                      on  = whole subject prompt 2b\n  5c  VITMATTE REFINE off = grow + blur (feathered hard edge)\n                      on  = real alpha matting (group F)\n  7b  LUMA SOFT MATTE adds the group D matte on top\n  9b  SUBJECT SHAPE   adds the subject mask as a second operand\n                      (pointless when 4c is on)\n\nAll default OFF -> detail prompt, grow + blur. Every input is lazy,\nso an off branch is never executed.\n\nTwo useful presets:\n  a small hard detail   4c off, 5c off\n  a translucent subject 4c on,  5c on, 9b off"
+   ],
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 212,
+   "type": "LazySwitchKJ",
+   "pos": [
+    2620,
+    -800
+   ],
+   "size": [
+    300,
+    100
+   ],
+   "flags": {},
+   "order": 22,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "switch",
+     "name": "switch",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "switch"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "on_false",
+     "name": "on_false",
+     "type": "*",
+     "link": 232
+    },
+    {
+     "localized_name": "on_true",
+     "name": "on_true",
+     "type": "*",
+     "link": 221
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "*",
+     "name": "*",
+     "type": "*",
+     "links": [
+      233,
+      240
+     ]
+    }
+   ],
+   "title": "9b. SWITCH 2 - SUBJECT / FULL SHAPE (default: off)",
+   "properties": {
+    "cnr_id": "comfyui-kjnodes",
+    "ver": "1.4.0",
+    "Node name for S&R": "LazySwitchKJ"
+   },
+   "widgets_values": [
+    false
+   ],
+   "color": "#232",
+   "bgcolor": "#353"
+  },
+  {
+   "id": 214,
+   "type": "LayerMask: MaskEdgeUltraDetail V2",
+   "pos": [
+    1450,
+    -1860
+   ],
+   "size": [
+    330,
+    320
+   ],
+   "flags": {},
+   "order": 13,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 234
+    },
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "link": 235
+    },
+    {
+     "localized_name": "method",
+     "name": "method",
+     "type": "COMBO",
+     "widget": {
+      "name": "method"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "mask_grow",
+     "name": "mask_grow",
+     "type": "INT",
+     "widget": {
+      "name": "mask_grow"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "fix_gap",
+     "name": "fix_gap",
+     "type": "INT",
+     "widget": {
+      "name": "fix_gap"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "fix_threshold",
+     "name": "fix_threshold",
+     "type": "FLOAT",
+     "widget": {
+      "name": "fix_threshold"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "edge_erode",
+     "name": "edge_erode",
+     "type": "INT",
+     "widget": {
+      "name": "edge_erode"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "edte_dilate",
+     "name": "edte_dilate",
+     "type": "INT",
+     "widget": {
+      "name": "edte_dilate"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "black_point",
+     "name": "black_point",
+     "type": "FLOAT",
+     "widget": {
+      "name": "black_point"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "white_point",
+     "name": "white_point",
+     "type": "FLOAT",
+     "widget": {
+      "name": "white_point"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "device",
+     "name": "device",
+     "type": "COMBO",
+     "widget": {
+      "name": "device"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "max_megapixels",
+     "name": "max_megapixels",
+     "type": "FLOAT",
+     "widget": {
+      "name": "max_megapixels"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "ret_images",
+     "name": "ret_images",
+     "type": "IMAGE",
+     "links": null
+    },
+    {
+     "localized_name": "ret_masks",
+     "name": "ret_masks",
+     "type": "MASK",
+     "links": [
+      237
+     ]
+    }
+   ],
+   "title": "5v. VITMatte edge refine (true alpha)",
+   "properties": {
+    "Node name for S&R": "LayerMask: MaskEdgeUltraDetail V2"
+   },
+   "widgets_values": [
+    "VITMatte",
+    0,
+    0,
+    0.75,
+    6,
+    6,
+    0.01,
+    0.99,
+    "cuda",
+    4.0
+   ]
+  },
+  {
+   "id": 215,
+   "type": "LazySwitchKJ",
+   "pos": [
+    1830,
+    -1800
+   ],
+   "size": [
+    300,
+    100
+   ],
+   "flags": {},
+   "order": 14,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "switch",
+     "name": "switch",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "switch"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "on_false",
+     "name": "on_false",
+     "type": "*",
+     "link": 236
+    },
+    {
+     "localized_name": "on_true",
+     "name": "on_true",
+     "type": "*",
+     "link": 237
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "*",
+     "name": "*",
+     "type": "*",
+     "links": [
+      206,
+      230
+     ]
+    }
+   ],
+   "title": "5c. SWITCH 3 - VITMATTE REFINE (default: off)",
+   "properties": {
+    "cnr_id": "comfyui-kjnodes",
+    "ver": "1.4.0",
+    "Node name for S&R": "LazySwitchKJ"
+   },
+   "widgets_values": [
+    false
+   ],
+   "color": "#232",
+   "bgcolor": "#353"
+  },
+  {
+   "id": 216,
+   "type": "Note",
+   "pos": [
+    2170,
+    -1860
+   ],
+   "size": [
+    520,
+    700
+   ],
+   "flags": {},
+   "order": 15,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "F - VITMATTE EDGE REFINE (switch 5c, off by default)\n\nSAM3 gives a BINARY mask - segmentation is a per-pixel classification,\nso there is no real alpha in it. VITMatte is a matting model: it takes\nthe SAM3 mask, builds a trimap around its edge (edge_erode /\nedte_dilate) and regresses a CONTINUOUS alpha inside that band. This\nis what actually resolves hair, fur, glass and translucency, as\nopposed to just feathering a hard edge.\n\n  off -> 5a grow + blur   (feathered hard edge, fast)\n  on  -> 5v VITMatte      (true alpha, slow)\n\nWith the switch on, the grow+blur node is skipped: VITMatte takes the\nRAW SAM3 mask, because it needs the un-feathered edge to build its\ntrimap from.\n\n--------------------------------------------------------------------\nREQUIREMENTS - this branch needs an extra node pack AND a model\n\n1) Node pack: ComfyUI_LayerStyle (chflame163)\n   ComfyUI Manager -> Custom Nodes Manager -> \"LayerStyle\"\n   or: git clone https://github.com/chflame163/ComfyUI_LayerStyle\n       into ComfyUI/custom_nodes/\n\n2) Model: vitmatte-small-composition-1k (~100 MB)\n   https://huggingface.co/hustvl/vitmatte-small-composition-1k/tree/main\n   Download: config.json, model.safetensors,\n             preprocessor_config.json\n   Copy to:  ComfyUI/models/vitmatte/\n\n   method = \"VITMatte\"         downloads the model itself on first\n                               run (needs internet)\n   method = \"VITMatte(local)\"  loads it from ComfyUI/models/vitmatte\n                               (use this once step 2 is done)\n\n   PyMatting and GuidedFilter need no model at all - GuidedFilter is\n   the fast, edge-aware version of what group D does by hand.\n\n--------------------------------------------------------------------\nTUNING\n\n  edge_erode / edte_dilate  width of the trimap band in px. Wider =\n                            more room to solve, slower, more risk of\n                            bleeding. 6/6 is a good start.\n  black_point / white_point alpha clipping. Keep 0.01 / 0.99 to stay\n                            soft; pull them in to harden the matte.\n  max_megapixels            VITMatte downscales above this. 2.0 is\n                            below HD - set 4.0 for 1920x1080, more\n                            for 4K, at the cost of VRAM.\n  device                    cpu works, just slowly.\n\nVITMatte runs per frame and is the slowest node in this graph. Test\non a short chunk before queueing a whole sequence."
+   ],
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 220,
+   "type": "InvertMask",
+   "pos": [
+    2320,
+    -60
+   ],
+   "size": [
+    210,
+    40
+   ],
+   "flags": {},
+   "order": 23,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "link": 240
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MASK",
+     "name": "MASK",
+     "type": "MASK",
+     "links": [
+      241
+     ]
+    }
+   ],
+   "title": "12. Invert (JoinImageWithAlpha expects it)",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "InvertMask"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 221,
+   "type": "JoinImageWithAlpha",
+   "pos": [
+    2600,
+    -70
+   ],
+   "size": [
+    250,
+    60
+   ],
+   "flags": {},
+   "order": 24,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 242
+    },
+    {
+     "localized_name": "alpha",
+     "name": "alpha",
+     "type": "MASK",
+     "link": 241
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "IMAGE",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": [
+      243
+     ]
+    }
+   ],
+   "title": "13. Source + alpha -> RGBA",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.21.1",
+    "Node name for S&R": "JoinImageWithAlpha"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 222,
+   "type": "VHS_VideoCombine",
+   "pos": [
+    2920,
+    -90
+   ],
+   "size": [
+    260,
+    238
+   ],
+   "flags": {},
+   "order": 25,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 243
+    },
+    {
+     "localized_name": "audio",
+     "name": "audio",
+     "shape": 7,
+     "type": "AUDIO",
+     "link": null
+    },
+    {
+     "localized_name": "meta_batch",
+     "name": "meta_batch",
+     "shape": 7,
+     "type": "VHS_BatchManager",
+     "link": null
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "shape": 7,
+     "type": "VAE",
+     "link": null
+    },
+    {
+     "localized_name": "frame_rate",
+     "name": "frame_rate",
+     "type": "FLOAT",
+     "widget": {
+      "name": "frame_rate"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "loop_count",
+     "name": "loop_count",
+     "type": "INT",
+     "widget": {
+      "name": "loop_count"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "filename_prefix",
+     "name": "filename_prefix",
+     "type": "STRING",
+     "widget": {
+      "name": "filename_prefix"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "format",
+     "name": "format",
+     "type": "COMBO",
+     "widget": {
+      "name": "format"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "pingpong",
+     "name": "pingpong",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "pingpong"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "save_output",
+     "name": "save_output",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "save_output"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "Filenames",
+     "name": "Filenames",
+     "type": "VHS_FILENAMES",
+     "links": null
+    }
+   ],
+   "title": "14. Save RGBA cut-out sequence",
+   "properties": {
+    "cnr_id": "comfyui-videohelpersuite",
+    "ver": "4ee72c065db22c9d96c2427954dc69e7b908444b",
+    "Node name for S&R": "VHS_VideoCombine"
+   },
+   "widgets_values": {
+    "frame_rate": 24,
+    "loop_count": 0,
+    "filename_prefix": "cutout_rgba/cutout_",
+    "format": "video/8bit-png",
+    "pingpong": false,
+    "save_output": true
+   }
+  },
+  {
+   "id": 223,
+   "type": "Note",
+   "pos": [
+    3230,
+    -90
+   ],
+   "size": [
+    470,
+    420
+   ],
+   "flags": {},
+   "order": 26,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "G - RGBA CUT-OUT (prep for a compositing workflow)\n\nThe mask branch (group E) saves the matte on its own. This branch\nsaves the CUT-OUT: the source frames with the final mask as the alpha\nchannel, i.e. transparent PNGs you can drop straight into a\ncompositing graph - ComfyUI_LayerStyle's ImageBlendAdvance, an\ninpaint crop/stitch relight pass, or After Effects / Nuke.\n\n  12  InvertMask   REQUIRED. ComfyUI's JoinImageWithAlpha does\n                   alpha = 1.0 - mask internally, so without this\n                   node the object comes out transparent and the\n                   background opaque. This is not a bug, it is the\n                   MASK convention: a mask marks a region, it is not\n                   an alpha channel.\n  13  JoinImageWithAlpha  RGB + alpha -> 4-channel image\n  14  VHS_VideoCombine    writes it out\n\nALPHA IS STRAIGHT, NOT PREMULTIPLIED. ComfyUI does not multiply the\nRGB by the alpha, so set your compositor to \"straight / unmatted\"\nwhen you import. Interpreting straight alpha as premultiplied is what\nproduces dark fringes on soft edges.\n\nFORMAT - all three keep the alpha:\n  video/8bit-png    default. 8 bit RGBA, one PNG per frame.\n  video/16bit-png   rgba64. Use it if the matte will be graded hard\n                    afterwards - 8 bit soft edges band quickly.\n  ProRes + profile 4444  one .mov with alpha instead of a sequence,\n                    handy for a round trip through AE.\n\nNot needed? Ctrl+M mutes this node - or mute node 11 instead if you\nonly want the cut-out and not the matte."
+   ],
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 218,
+   "type": "LazySwitchKJ",
+   "pos": [
+    660,
+    -1660
+   ],
+   "size": [
+    320,
+    100
+   ],
+   "flags": {},
+   "order": 8,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "switch",
+     "name": "switch",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "switch"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "on_false",
+     "name": "on_false",
+     "type": "*",
+     "link": 244
+    },
+    {
+     "localized_name": "on_true",
+     "name": "on_true",
+     "type": "*",
+     "link": 245
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "*",
+     "name": "*",
+     "type": "*",
+     "links": [
+      207,
+      235
+     ]
+    }
+   ],
+   "title": "4c. SWITCH 0 - TARGET: off = detail (2a) / on = whole subject (2b)",
+   "properties": {
+    "cnr_id": "comfyui-kjnodes",
+    "ver": "1.4.0",
+    "Node name for S&R": "LazySwitchKJ"
+   },
+   "widgets_values": [
+    false
+   ],
+   "color": "#322",
+   "bgcolor": "#533"
+  },
+  {
+   "id": 219,
+   "type": "Note",
+   "pos": [
+    1010,
+    -1660
+   ],
+   "size": [
+    360,
+    420
+   ],
+   "flags": {},
+   "order": 9,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "SWITCH 0 - WHAT ARE WE MASKING?\n\n  off  prompt 2a, the DETAIL      (e.g. \"fish eye\")\n  on   prompt 2b, the WHOLE SUBJECT (e.g. \"translucent fish\")\n\nEverything downstream - grow+blur or VITMatte, the luma matte, the\ncut-out - works on whichever of the two you pick here. Lazy, so the\nother SAM3 pass does not run.\n\nWHY YOU WANT THIS WITH 5c ON:\na subject that is translucent all over, or has thin fins / fur /\nstrands, is the case a binary mask cannot represent at all. No amount\nof grow+blur helps: the fin edge is not a soft EDGE, it is a large\narea of partial transparency. That is precisely what a matting model\nsolves. Target = subject + 5c on + the RGBA cut-out in group G is the\ncombination to test that with.\n\nNOTE: with the target set to subject, switch 9b (add subject shape)\nbecomes pointless - it would add the subject to itself. Leave 9b off.\n\nThe luma matte (7b) is worth a try here too: for a translucent body\nthe luminance IS roughly the opacity, which is the one case where\nthat branch is not a hack."
+   ],
+   "color": "#432",
+   "bgcolor": "#653"
+  }
+ ],
+ "links": [
+  [
+   1,
+   89,
+   0,
+   88,
+   0,
+   "MODEL"
+  ],
+  [
+   2,
+   89,
+   1,
+   90,
+   0,
+   "CLIP"
+  ],
+  [
+   3,
+   90,
+   0,
+   88,
+   2,
+   "CONDITIONING"
+  ],
+  [
+   4,
+   57,
+   0,
+   88,
+   1,
+   "IMAGE"
+  ],
+  [
+   5,
+   57,
+   0,
+   20,
+   0,
+   "IMAGE"
+  ],
+  [
+   10,
+   20,
+   0,
+   100,
+   0,
+   "MASK"
+  ],
+  [
+   13,
+   101,
+   0,
+   102,
+   0,
+   "MASK"
+  ],
+  [
+   144,
+   100,
+   0,
+   117,
+   0,
+   "IMAGE"
+  ],
+  [
+   145,
+   117,
+   0,
+   101,
+   0,
+   "IMAGE"
+  ],
+  [
+   154,
+   119,
+   0,
+   118,
+   2,
+   "CONDITIONING"
+  ],
+  [
+   155,
+   89,
+   0,
+   118,
+   0,
+   "MODEL"
+  ],
+  [
+   156,
+   89,
+   1,
+   119,
+   0,
+   "CLIP"
+  ],
+  [
+   161,
+   57,
+   0,
+   118,
+   1,
+   "IMAGE"
+  ],
+  [
+   206,
+   215,
+   0,
+   58,
+   0,
+   "MASK"
+  ],
+  [
+   207,
+   218,
+   0,
+   131,
+   0,
+   "*"
+  ],
+  [
+   208,
+   118,
+   0,
+   133,
+   0,
+   "MASK"
+  ],
+  [
+   209,
+   133,
+   0,
+   126,
+   0,
+   "MASK"
+  ],
+  [
+   210,
+   102,
+   0,
+   58,
+   1,
+   "MASK"
+  ],
+  [
+   211,
+   135,
+   0,
+   134,
+   0,
+   "INT"
+  ],
+  [
+   212,
+   134,
+   0,
+   57,
+   7,
+   "INT"
+  ],
+  [
+   215,
+   126,
+   0,
+   140,
+   0,
+   "IMAGE"
+  ],
+  [
+   217,
+   140,
+   0,
+   141,
+   0,
+   "IMAGE"
+  ],
+  [
+   218,
+   141,
+   0,
+   137,
+   1,
+   "MASK"
+  ],
+  [
+   219,
+   58,
+   0,
+   210,
+   2,
+   "*"
+  ],
+  [
+   220,
+   91,
+   0,
+   96,
+   0,
+   "IMAGE"
+  ],
+  [
+   221,
+   137,
+   0,
+   212,
+   2,
+   "*"
+  ],
+  [
+   230,
+   215,
+   0,
+   210,
+   1,
+   "*"
+  ],
+  [
+   231,
+   210,
+   0,
+   137,
+   0,
+   "*"
+  ],
+  [
+   232,
+   210,
+   0,
+   212,
+   1,
+   "*"
+  ],
+  [
+   233,
+   212,
+   0,
+   91,
+   0,
+   "*"
+  ],
+  [
+   234,
+   57,
+   0,
+   214,
+   0,
+   "IMAGE"
+  ],
+  [
+   235,
+   218,
+   0,
+   214,
+   1,
+   "*"
+  ],
+  [
+   236,
+   131,
+   0,
+   215,
+   1,
+   "*"
+  ],
+  [
+   237,
+   214,
+   1,
+   215,
+   2,
+   "*"
+  ],
+  [
+   240,
+   212,
+   0,
+   220,
+   0,
+   "*"
+  ],
+  [
+   241,
+   220,
+   0,
+   221,
+   1,
+   "MASK"
+  ],
+  [
+   242,
+   57,
+   0,
+   221,
+   0,
+   "IMAGE"
+  ],
+  [
+   243,
+   221,
+   0,
+   222,
+   0,
+   "IMAGE"
+  ],
+  [
+   244,
+   88,
+   0,
+   218,
+   1,
+   "*"
+  ],
+  [
+   245,
+   118,
+   0,
+   218,
+   2,
+   "*"
+  ]
+ ],
+ "groups": [
+  {
+   "id": 1,
+   "title": "A - Chunked input",
+   "bounding": [
+    -1480,
+    -420,
+    1120,
+    700
+   ],
+   "color": "#3f789e",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 2,
+   "title": "B - Model + prompts",
+   "bounding": [
+    -340,
+    -1080,
+    950,
+    620
+   ],
+   "color": "#88A",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 3,
+   "title": "C - SAM3 segmentation",
+   "bounding": [
+    620,
+    -1700,
+    760,
+    1260
+   ],
+   "color": "#3f789e",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 4,
+   "title": "D - Luma soft matte",
+   "bounding": [
+    -220,
+    -420,
+    1540,
+    240
+   ],
+   "color": "#A88",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 5,
+   "title": "E - Combine + output",
+   "bounding": [
+    1420,
+    -1180,
+    2290,
+    980
+   ],
+   "color": "#3f789e",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 6,
+   "title": "F - VITMatte refine (optional, needs extra model)",
+   "bounding": [
+    1420,
+    -1920,
+    1290,
+    460
+   ],
+   "color": "#A88",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 7,
+   "title": "G - RGBA cut-out (prep for compositing)",
+   "bounding": [
+    2280,
+    -160,
+    1440,
+    560
+   ],
+   "color": "#3f789e",
+   "font_size": 24,
+   "flags": {}
+  }
+ ],
+ "definitions": {
+  "subgraphs": [
+   {
+    "id": "dc06fff6-22dc-45f8-9c4f-0e3992bca2e3",
+    "version": 1,
+    "state": {
+     "lastGroupId": 0,
+     "lastNodeId": 142,
+     "lastLinkId": 222,
+     "lastRerouteId": 0
+    },
+    "revision": 0,
+    "config": {},
+    "name": "Color Curves",
+    "description": "Fine-tunes tone and color with per-channel curve adjustments using a real-time GPU fragment shader.",
+    "inputNode": {
+     "id": -10,
+     "bounding": [
+      2660,
+      -4500,
+      120,
+      60
+     ]
+    },
+    "outputNode": {
+     "id": -20,
+     "bounding": [
+      4270,
+      -4500,
+      120,
+      60
+     ]
+    },
+    "inputs": [
+     {
+      "id": "abc345b7-f55e-4f32-a11d-3aa4c2b0936b",
+      "name": "images.image0",
+      "type": "IMAGE",
+      "linkIds": [
+       29,
+       34
+      ],
+      "localized_name": "images.image0",
+      "label": "image",
+      "pos": [
+       2760,
+       -4480
+      ]
+     }
+    ],
+    "outputs": [
+     {
+      "id": "eb0ec079-46da-4408-8263-9ef85569d33d",
+      "name": "IMAGE0",
+      "type": "IMAGE",
+      "linkIds": [
+       28
+      ],
+      "localized_name": "IMAGE0",
+      "label": "IMAGE",
+      "pos": [
+       4290,
+       -4480
+      ]
+     }
+    ],
+    "widgets": [],
+    "nodes": [
+     {
+      "id": 4,
+      "type": "CurveEditor",
+      "pos": [
+       3060,
+       -4500
+      ],
+      "size": [
+       270,
+       200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+       {
+        "label": "histogram",
+        "localized_name": "histogram",
+        "name": "histogram",
+        "shape": 7,
+        "type": "HISTOGRAM",
+        "link": 35
+       },
+       {
+        "label": "curve",
+        "localized_name": "curve",
+        "name": "curve",
+        "type": "CURVE",
+        "widget": {
+         "name": "curve"
+        },
+        "link": null
+       }
+      ],
+      "outputs": [
+       {
+        "localized_name": "curve",
+        "name": "curve",
+        "type": "CURVE",
+        "links": [
+         30
+        ]
+       }
+      ],
+      "title": "RGB Master",
+      "properties": {
+       "cnr_id": "comfy-core",
+       "ver": "0.21.1",
+       "Node name for S&R": "CurveEditor"
+      },
+      "widgets_values": [
+       {
+        "points": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          0.13431911967276733
+         ]
+        ],
+        "interpolation": "monotone_cubic"
+       }
+      ]
+     },
+     {
+      "id": 5,
+      "type": "CurveEditor",
+      "pos": [
+       3060,
+       -4250
+      ],
+      "size": [
+       270,
+       200
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+       {
+        "label": "histogram",
+        "localized_name": "histogram",
+        "name": "histogram",
+        "shape": 7,
+        "type": "HISTOGRAM",
+        "link": 36
+       },
+       {
+        "label": "curve",
+        "localized_name": "curve",
+        "name": "curve",
+        "type": "CURVE",
+        "widget": {
+         "name": "curve"
+        },
+        "link": null
+       }
+      ],
+      "outputs": [
+       {
+        "localized_name": "curve",
+        "name": "curve",
+        "type": "CURVE",
+        "links": [
+         31
+        ]
+       }
+      ],
+      "title": "Red",
+      "properties": {
+       "cnr_id": "comfy-core",
+       "ver": "0.21.1",
+       "Node name for S&R": "CurveEditor"
+      },
+      "widgets_values": [
+       {
+        "points": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          1
+         ]
+        ],
+        "interpolation": "monotone_cubic"
+       }
+      ]
+     },
+     {
+      "id": 6,
+      "type": "CurveEditor",
+      "pos": [
+       3060,
+       -4000
+      ],
+      "size": [
+       270,
+       200
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+       {
+        "label": "histogram",
+        "localized_name": "histogram",
+        "name": "histogram",
+        "shape": 7,
+        "type": "HISTOGRAM",
+        "link": 37
+       },
+       {
+        "label": "curve",
+        "localized_name": "curve",
+        "name": "curve",
+        "type": "CURVE",
+        "widget": {
+         "name": "curve"
+        },
+        "link": null
+       }
+      ],
+      "outputs": [
+       {
+        "localized_name": "curve",
+        "name": "curve",
+        "type": "CURVE",
+        "links": [
+         32
+        ]
+       }
+      ],
+      "title": "Green",
+      "properties": {
+       "cnr_id": "comfy-core",
+       "ver": "0.21.1",
+       "Node name for S&R": "CurveEditor"
+      },
+      "widgets_values": [
+       {
+        "points": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          1
+         ]
+        ],
+        "interpolation": "monotone_cubic"
+       }
+      ]
+     },
+     {
+      "id": 7,
+      "type": "CurveEditor",
+      "pos": [
+       3060,
+       -3750
+      ],
+      "size": [
+       270,
+       200
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+       {
+        "label": "histogram",
+        "localized_name": "histogram",
+        "name": "histogram",
+        "shape": 7,
+        "type": "HISTOGRAM",
+        "link": 38
+       },
+       {
+        "label": "curve",
+        "localized_name": "curve",
+        "name": "curve",
+        "type": "CURVE",
+        "widget": {
+         "name": "curve"
+        },
+        "link": null
+       }
+      ],
+      "outputs": [
+       {
+        "localized_name": "curve",
+        "name": "curve",
+        "type": "CURVE",
+        "links": [
+         33
+        ]
+       }
+      ],
+      "title": "Blue",
+      "properties": {
+       "cnr_id": "comfy-core",
+       "ver": "0.21.1",
+       "Node name for S&R": "CurveEditor"
+      },
+      "widgets_values": [
+       {
+        "points": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          1
+         ]
+        ],
+        "interpolation": "monotone_cubic"
+       }
+      ]
+     },
+     {
+      "id": 8,
+      "type": "GLSLShader",
+      "pos": [
+       3590,
+       -4500
+      ],
+      "size": [
+       420,
+       272
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+       {
+        "label": "image0",
+        "localized_name": "images.image0",
+        "name": "images.image0",
+        "type": "IMAGE",
+        "link": 29
+       },
+       {
+        "label": "image1",
+        "localized_name": "images.image1",
+        "name": "images.image1",
+        "shape": 7,
+        "type": "IMAGE",
+        "link": null
+       },
+       {
+        "label": "u_float0",
+        "localized_name": "floats.u_float0",
+        "name": "floats.u_float0",
+        "shape": 7,
+        "type": "FLOAT",
+        "link": null
+       },
+       {
+        "label": "u_int0",
+        "localized_name": "ints.u_int0",
+        "name": "ints.u_int0",
+        "shape": 7,
+        "type": "INT",
+        "link": null
+       },
+       {
+        "label": "u_bool0",
+        "localized_name": "bools.u_bool0",
+        "name": "bools.u_bool0",
+        "shape": 7,
+        "type": "BOOLEAN",
+        "link": null
+       },
+       {
+        "label": "u_curve0",
+        "localized_name": "curves.u_curve0",
+        "name": "curves.u_curve0",
+        "shape": 7,
+        "type": "CURVE",
+        "link": 30
+       },
+       {
+        "label": "u_curve1",
+        "localized_name": "curves.u_curve1",
+        "name": "curves.u_curve1",
+        "shape": 7,
+        "type": "CURVE",
+        "link": 31
+       },
+       {
+        "label": "u_curve2",
+        "localized_name": "curves.u_curve2",
+        "name": "curves.u_curve2",
+        "shape": 7,
+        "type": "CURVE",
+        "link": 32
+       },
+       {
+        "label": "u_curve3",
+        "localized_name": "curves.u_curve3",
+        "name": "curves.u_curve3",
+        "shape": 7,
+        "type": "CURVE",
+        "link": 33
+       },
+       {
+        "localized_name": "fragment_shader",
+        "name": "fragment_shader",
+        "type": "STRING",
+        "widget": {
+         "name": "fragment_shader"
+        },
+        "link": null
+       },
+       {
+        "localized_name": "size_mode",
+        "name": "size_mode",
+        "type": "COMFY_DYNAMICCOMBO_V3",
+        "widget": {
+         "name": "size_mode"
+        },
+        "link": null
+       }
+      ],
+      "outputs": [
+       {
+        "localized_name": "IMAGE0",
+        "name": "IMAGE0",
+        "type": "IMAGE",
+        "links": [
+         28
+        ]
+       },
+       {
+        "localized_name": "IMAGE1",
+        "name": "IMAGE1",
+        "type": "IMAGE",
+        "links": null
+       },
+       {
+        "localized_name": "IMAGE2",
+        "name": "IMAGE2",
+        "type": "IMAGE",
+        "links": null
+       },
+       {
+        "localized_name": "IMAGE3",
+        "name": "IMAGE3",
+        "type": "IMAGE",
+        "links": null
+       }
+      ],
+      "properties": {
+       "cnr_id": "comfy-core",
+       "ver": "0.21.1",
+       "Node name for S&R": "GLSLShader"
+      },
+      "widgets_values": [
+       "#version 300 es\nprecision highp float;\n\nuniform sampler2D u_image0;\nuniform sampler2D u_curve0;  // RGB master curve (256x1 LUT)\nuniform sampler2D u_curve1;  // Red channel curve\nuniform sampler2D u_curve2;  // Green channel curve\nuniform sampler2D u_curve3;  // Blue channel curve\n\nin vec2 v_texCoord;\nlayout(location = 0) out vec4 fragColor0;\n\n// GIMP-compatible curve lookup with manual linear interpolation.\n// Matches gimp_curve_map_value_inline() from gimpcurve-map.c:\n//   index = value * (n_samples - 1)\n//   f = fract(index)\n//   result = (1-f) * samples[floor] + f * samples[ceil]\n//\n// Uses texelFetch (NEAREST) to avoid GPU half-texel offset issues\n// that occur with texture() + GL_LINEAR on small 256x1 LUTs.\nfloat applyCurve(sampler2D curve, float value) {\n    value = clamp(value, 0.0, 1.0);\n\n    float pos = value * 255.0;\n    int lo = int(floor(pos));\n    int hi = min(lo + 1, 255);\n    float f = pos - float(lo);\n\n    float a = texelFetch(curve, ivec2(lo, 0), 0).r;\n    float b = texelFetch(curve, ivec2(hi, 0), 0).r;\n\n    return a + f * (b - a);\n}\n\nvoid main() {\n    vec4 color = texture(u_image0, v_texCoord);\n\n    // GIMP order: per-channel curves first, then RGB master curve.\n    // See gimp_curve_map_pixels() default case in gimpcurve-map.c:\n    //   dest = colors_curve( channel_curve( src ) )\n    float tmp_r = applyCurve(u_curve1, color.r);\n    float tmp_g = applyCurve(u_curve2, color.g);\n    float tmp_b = applyCurve(u_curve3, color.b);\n    color.r = applyCurve(u_curve0, tmp_r);\n    color.g = applyCurve(u_curve0, tmp_g);\n    color.b = applyCurve(u_curve0, tmp_b);\n\n    fragColor0 = vec4(color.rgb, color.a);\n}\n",
+       "from_input"
+      ]
+     },
+     {
+      "id": 9,
+      "type": "ImageHistogram",
+      "pos": [
+       2800,
+       -4300
+      ],
+      "size": [
+       210,
+       150
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+       {
+        "label": "image",
+        "localized_name": "image",
+        "name": "image",
+        "type": "IMAGE",
+        "link": 34
+       }
+      ],
+      "outputs": [
+       {
+        "localized_name": "rgb",
+        "name": "rgb",
+        "type": "HISTOGRAM",
+        "links": [
+         35
+        ]
+       },
+       {
+        "localized_name": "luminance",
+        "name": "luminance",
+        "type": "HISTOGRAM",
+        "links": []
+       },
+       {
+        "localized_name": "red",
+        "name": "red",
+        "type": "HISTOGRAM",
+        "links": [
+         36
+        ]
+       },
+       {
+        "localized_name": "green",
+        "name": "green",
+        "type": "HISTOGRAM",
+        "links": [
+         37
+        ]
+       },
+       {
+        "localized_name": "blue",
+        "name": "blue",
+        "type": "HISTOGRAM",
+        "links": [
+         38
+        ]
+       }
+      ],
+      "properties": {
+       "cnr_id": "comfy-core",
+       "ver": "0.21.1",
+       "Node name for S&R": "ImageHistogram"
+      },
+      "widgets_values": []
+     }
+    ],
+    "groups": [],
+    "links": [
+     {
+      "id": 29,
+      "origin_id": -10,
+      "origin_slot": 0,
+      "target_id": 8,
+      "target_slot": 0,
+      "type": "IMAGE"
+     },
+     {
+      "id": 28,
+      "origin_id": 8,
+      "origin_slot": 0,
+      "target_id": -20,
+      "target_slot": 0,
+      "type": "IMAGE"
+     },
+     {
+      "id": 30,
+      "origin_id": 4,
+      "origin_slot": 0,
+      "target_id": 8,
+      "target_slot": 5,
+      "type": "CURVE"
+     },
+     {
+      "id": 31,
+      "origin_id": 5,
+      "origin_slot": 0,
+      "target_id": 8,
+      "target_slot": 6,
+      "type": "CURVE"
+     },
+     {
+      "id": 32,
+      "origin_id": 6,
+      "origin_slot": 0,
+      "target_id": 8,
+      "target_slot": 7,
+      "type": "CURVE"
+     },
+     {
+      "id": 33,
+      "origin_id": 7,
+      "origin_slot": 0,
+      "target_id": 8,
+      "target_slot": 8,
+      "type": "CURVE"
+     },
+     {
+      "id": 34,
+      "origin_id": -10,
+      "origin_slot": 0,
+      "target_id": 9,
+      "target_slot": 0,
+      "type": "IMAGE"
+     },
+     {
+      "id": 35,
+      "origin_id": 9,
+      "origin_slot": 0,
+      "target_id": 4,
+      "target_slot": 1,
+      "type": "HISTOGRAM"
+     },
+     {
+      "id": 36,
+      "origin_id": 9,
+      "origin_slot": 2,
+      "target_id": 5,
+      "target_slot": 1,
+      "type": "HISTOGRAM"
+     },
+     {
+      "id": 37,
+      "origin_id": 9,
+      "origin_slot": 3,
+      "target_id": 6,
+      "target_slot": 1,
+      "type": "HISTOGRAM"
+     },
+     {
+      "id": 38,
+      "origin_id": 9,
+      "origin_slot": 4,
+      "target_id": 7,
+      "target_slot": 1,
+      "type": "HISTOGRAM"
+     }
+    ],
+    "extra": {
+     "workflowRendererVersion": "LG"
+    }
+   }
+  ]
+ },
+ "config": {},
+ "extra": {
+  "ds": {
+   "scale": 0.5209868481924399,
+   "offset": [
+    1906.3792674636506,
+    1089.4805951013886
+   ]
+  }
+ },
+ "version": 0.4
+}
